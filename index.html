@@ -90,11 +90,50 @@
         </a>
 
         <div class="reviews-slider">
-            <strong>Ce que nos clients disent :</strong>
-            <p>"Un séjour inoubliable, la villa à Sotta est un vrai paradis !" - <em>Marie D.</em></p>
+            <h3 style="margin-top:0; font-size: 1rem;">Ce que nos clients disent</h3>
+            
+            <div class="slider-container" style="position: relative; padding: 10px 40px;">
+                <div class="slide" style="display: block;">
+                    <p>"Un séjour inoubliable, la villa à Sotta est un vrai paradis ! Tout était parfait."</p>
+                    <strong>- Marie D.</strong>
+                </div>
+                
+                <div class="slide" style="display: none;">
+                    <p>"L'appartement à Porto-Vecchio a une vue incroyable. Accueil très chaleureux."</p>
+                    <strong>- Jean-Marc P.</strong>
+                </div>
+
+                <div class="slide" style="display: none;">
+                    <p>"Propreté impeccable et décoration avec beaucoup de goût. On reviendra !"</p>
+                    <strong>- Sophie L.</strong>
+                </div>
+
+                <button onclick="changeSlide(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 20px;">❮</button>
+                <button onclick="changeSlide(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 20px;">❯</button>
+            </div>
+
+            <div style="margin-top: 10px;">
+                <span class="dot" style="height: 8px; width: 8px; background-color: #333; border-radius: 50%; display: inline-block; margin: 0 3px;"></span>
+                <span class="dot" style="height: 8px; width: 8px; background-color: #bbb; border-radius: 50%; display: inline-block; margin: 0 3px;"></span>
+                <span class="dot" style="height: 8px; width: 8px; background-color: #bbb; border-radius: 50%; display: inline-block; margin: 0 3px;"></span>
+            </div>
         </div>
 
-    </div>
+    </div> <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function changeSlide(direction) {
+            slides[currentSlide].style.display = 'none';
+            dots[currentSlide].style.backgroundColor = '#bbb';
+            
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            
+            slides[currentSlide].style.display = 'block';
+            dots[currentSlide].style.backgroundColor = '#333';
+        }
+    </script>
 
 </body>
 </html>
