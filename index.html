@@ -1,3 +1,12 @@
+Ah ! Je comprends tout à fait ta réaction en voyant le résultat. Effectivement, ce n'est pas du tout ce qui était prévu, et je m'en excuse !
+
+Ce qui s'est passé, c'est que le code pour l'Option 3 a essayé de générer des formes colorées par-dessus ton image de fond actuelle (les falaises et la mer en Corse). Du coup, au lieu de donner un joli effet terracotta, cela a créé une sorte de gros voile blanc brumeux ultra agressif qui délave complètement ton magnifique paysage. C'est effectivement très froid et presque illisible.
+
+Puisque tu as déjà cette superbe photo de la Corse en arrière-plan (qui est magnifique !), on va oublier les formes géométriques et utiliser le code parfait pour magnifier ton image de fond, faire ressortir tes cartes sans ce blanc chirurgical, et réchauffer l'ensemble.
+
+Voici le script complet, entièrement corrigé et nettoyé, prêt à être collé à la place du tien :
+
+HTML
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -7,16 +16,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #eddcd2; /* Fond sable/lin chaleureux */
-            --card-bg: #fff8f5; /* Cartes crème doux */
-            --text-color: #2c2c2c;
-            --text-muted: #757575;
-            --accent-color: #1a1a1a;
+            /* On ajuste les textes pour qu'ils ressortent magnifiquement sur l'image */
+            --text-color: #1a1a1a;
+            --text-muted: #4a4a4a;
+            --accent-color: #b5836a; /* Une touche terracotta chaleureuse */
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
+            /* On nettoie le fond : ton image s'affiche sans voile blanc agressif */
+            background-image: url('fond-corse.jpg'); /* Remplace par le nom exact de ton image si besoin */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             color: var(--text-color);
             margin: 0;
             display: flex;
@@ -32,37 +44,38 @@
             text-align: center; 
         }
 
-        /* En-tête */
+        /* En-tête haut de gamme */
         .logo { 
-            width: 85px; 
-            height: 85px;
+            width: 90px; 
+            height: 90px;
             border-radius: 50%; 
             margin-bottom: 20px; 
             object-fit: cover;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         
         h1 { 
-            font-size: 1.35rem; 
+            font-size: 1.4rem; 
             letter-spacing: 4px; 
-            margin-bottom: 10px; 
+            margin-bottom: 8px; 
             text-transform: uppercase; 
-            font-weight: 600; 
+            font-weight: 600;
+            color: #1a1a1a;
         }
 
         .subtitle {
             font-size: 0.75rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--text-muted);
+            letter-spacing: 3px;
+            color: #555;
             margin-bottom: 25px;
-            font-weight: 400;
+            font-weight: 500;
         }
 
         .divider {
-            width: 40px;
+            width: 50px;
             height: 1px;
-            background-color: rgba(0,0,0,0.15);
+            background-color: rgba(0,0,0,0.2);
             margin: 0 auto 25px auto;
         }
 
@@ -70,83 +83,84 @@
             margin-bottom: 40px; 
             font-size: 0.9rem; 
             line-height: 1.7; 
-            color: var(--text-muted);
-            font-weight: 300;
+            color: #2c2c2c;
+            font-weight: 400;
             padding: 0 10px;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.5); /* Améliore la lisibilité sur le ciel */
         }
 
-        /* Cartes Propriétés */
+        /* Cartes Propriétés Crème/Sable (Plus de blanc chirurgical) */
         .property-card {
-            background: var(--card-bg);
+            background: #fffaf7; /* Un ton crème très doux et chaleureux */
             border-radius: 24px; 
             overflow: hidden;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
             display: block;
             text-decoration: none;
             color: inherit;
-            border: 1px solid #cca48e;
-            box-shadow: 0 12px 30px rgba(139, 92, 70, 0.15);
+            border: 1px solid rgba(181, 131, 106, 0.2); /* Fine bordure terracotta translucide */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .property-card:hover { 
-            transform: translateY(-4px); 
-            box-shadow: 0 16px 40px rgba(139, 92, 70, 0.25);
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 45px rgba(139, 92, 70, 0.18);
         }
 
         .property-image-wrapper {
             width: 100%;
-            height: 280px; 
+            height: 270px; 
             overflow: hidden;
-            position: relative;
         }
 
         .property-card img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
 
         .property-card:hover img {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .property-details { 
-            padding: 20px 22px; 
+            padding: 22px; 
             text-align: left; 
         }
         
         .property-location {
             font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-muted);
-            font-weight: 500;
+            letter-spacing: 2px;
+            color: var(--accent-color); /* Écrit en terracotta pour rappeler le Sud */
+            font-weight: 600;
             margin-bottom: 6px;
         }
 
         .property-title { 
             font-weight: 600; 
-            font-size: 1.05rem; 
+            font-size: 1.1rem; 
             margin-bottom: 6px;
             letter-spacing: 0.5px;
+            color: #1a1a1a;
         }
         
         .property-desc { 
             font-size: 0.8rem; 
             color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.4;
+            font-weight: 400;
+            line-height: 1.5;
         }
 
-        /* Section Témoignages Terracotta */
+        /* Section Témoignages Chaleureuse en Terracotta */
         .reviews-section {
-            margin-top: 45px;
-            padding: 25px 20px;
-            background: #b5836a; 
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+            padding: 30px 20px;
+            background: #b5836a; /* Fond terracotta soutenu */
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
         }
 
         .reviews-section h3 {
@@ -160,7 +174,7 @@
         
         .slider-container {
             position: relative;
-            padding: 0 35px;
+            padding: 0 30px;
         }
 
         .slide {
@@ -173,12 +187,12 @@
 
         .slide strong {
             display: block;
-            margin-top: 10px;
+            margin-top: 12px;
             font-style: normal;
             font-size: 0.75rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: #f5e6de;
+            color: #f5e6de; /* Écrit en sable clair pour l'élégance */
         }
 
         .nav-btn {
@@ -188,12 +202,13 @@
             background: none;
             border: none;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 18px;
             color: #ffffff;
+            opacity: 0.7;
             transition: opacity 0.2s;
             padding: 10px;
         }
-        .nav-btn:hover { opacity: 0.7; }
+        .nav-btn:hover { opacity: 1; }
         .prev-btn { left: -10px; }
         .next-btn { right: -10px; }
 
@@ -202,12 +217,12 @@
         }
 
         .dot {
-            height: 5px;
-            width: 5px;
+            height: 6px;
+            width: 6px;
             background-color: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             display: inline-block;
-            margin: 0 4px;
+            margin: 0 5px;
             transition: background-color 0.3s, transform 0.3s;
         }
         
@@ -221,17 +236,18 @@
             margin-top: 50px;
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 25px;
         }
 
         .footer-link {
             font-size: 0.75rem;
             text-decoration: none;
-            color: var(--text-muted);
+            color: #2c2c2c;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
+            letter-spacing: 1.5px;
+            font-weight: 600;
             transition: color 0.2s;
+            text-shadow: 0 1px 1px rgba(255,255,255,0.4);
         }
 
         .footer-link:hover { color: var(--accent-color); }
