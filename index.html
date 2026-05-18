@@ -14,11 +14,13 @@
             --accent-color: #1a1a1a;
         }
 
-        body {
+       body {
     font-family: 'Montserrat', sans-serif;
-    /* Dégradé doux qui part du blanc crème vers un orangé/rosé très pâle */
-    background: linear-gradient(135deg, #fcf8f5 0%, #f7e6dc 50%, #f3dcd0 100%);
-    background-attachment: fixed; /* Le fond reste fixe quand on scroll */
+    /* Remplace 'fond-corse.jpg' par le nom de ton image de fond */
+    background: linear-gradient(rgba(252, 248, 245, 0.85), rgba(252, 248, 245, 0.85)), url('fond-corse.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     color: var(--text-color);
     margin: 0;
     display: flex;
