@@ -15,17 +15,18 @@
         }
 
         body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px 20px;
-            -webkit-font-smoothing: antialiased;
-        }
-
+    font-family: 'Montserrat', sans-serif;
+    /* Dégradé doux qui part du blanc crème vers un orangé/rosé très pâle */
+    background: linear-gradient(135deg, #fcf8f5 0%, #f7e6dc 50%, #f3dcd0 100%);
+    background-attachment: fixed; /* Le fond reste fixe quand on scroll */
+    color: var(--text-color);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    -webkit-font-smoothing: antialiased;
+}
         .container { 
             width: 100%; 
             max-width: 420px; 
