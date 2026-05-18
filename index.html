@@ -72,15 +72,20 @@
         }
 
         .description-box { 
-            margin-bottom: 40px; 
-            font-size: 0.9rem; 
-            line-height: 1.7; 
-            color: #2c2c2c;
-            font-weight: 400;
-            padding: 0 10px;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.5); /* Améliore la lisibilité sur le ciel */
-        }
-
+    margin-bottom: 40px; 
+    font-size: 0.9rem; 
+    line-height: 1.7; 
+    color: #1a1a1a; /* Texte bien foncé */
+    font-weight: 500;
+    padding: 15px 20px;
+    /* Effet verre dépoli doux pour détacher le texte de la photo de fond */
+    background: rgba(255, 255, 255, 0.65); 
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
         /* Cartes Propriétés Crème/Sable (Plus de blanc chirurgical) */
         .property-card {
             background: #fffaf7; /* Un ton crème très doux et chaleureux */
@@ -146,61 +151,56 @@
             line-height: 1.5;
         }
 
-        /* Section Témoignages Chaleureuse en Terracotta */
-        .reviews-section {
-            margin-top: 40px;
-            padding: 30px 20px;
-            background: #b5836a; /* Fond terracotta soutenu */
-            border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
-        }
+        /* Section Témoignages accordée au logo */
+.reviews-section {
+    margin-top: 40px;
+    padding: 30px 20px;
+    background: #a38a7b; /* Le marron/taupe chic de votre logo */
+    border-radius: 24px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
 
-        .reviews-section h3 {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 25px;
-            font-weight: 600;
-            color: #ffffff;
-        }
-        
-        .slider-container {
-            position: relative;
-            padding: 0 30px;
-        }
+.reviews-section h3 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    color: #ffffff;
+}
 
-        .slide {
-            font-size: 0.85rem;
-            line-height: 1.6;
-            font-style: italic;
-            color: #ffffff;
-            min-height: 70px;
-        }
+.slide {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    font-style: italic;
+    color: #ffffff;
+    min-height: 70px;
+}
 
-        .slide strong {
-            display: block;
-            margin-top: 12px;
-            font-style: normal;
-            font-size: 0.75rem;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #f5e6de; /* Écrit en sable clair pour l'élégance */
-        }
+.slide strong {
+    display: block;
+    margin-top: 12px;
+    font-style: normal;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #fdf0e6; /* Rappel du fond crème clair du logo */
+}
 
-        .nav-btn {
-            position: absolute;
-            top: 35%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 18px;
-            color: #ffffff;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-            padding: 10px;
-        }
-        .nav-btn:hover { opacity: 1; }
+.nav-btn {
+    position: absolute;
+    top: 35%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #ffffff;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    padding: 10px;
+}
+.nav-btn:hover { opacity: 1; }
         .prev-btn { left: -10px; }
         .next-btn { right: -10px; }
 
