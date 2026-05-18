@@ -9,13 +9,16 @@
         :root {
             --text-color: #1a1a1a;
             --text-muted: #4a4a4a;
-            --accent-color: #b5836a; /* Touche terracotta */
+            --accent-color: #b5836a; /* Terracotta */
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Fond dégradé doux effet sable/crème, chaleureux et moderne */
-            background: linear-gradient(135deg, #fbf7f4 0%, #f3eae3 50%, #eade|d5 100%);
+            /* Fond texturé chaleureux effet chaux/sable qui habille tout l'écran */
+            background: linear-gradient(135deg, rgba(251, 247, 244, 0.92) 0%, rgba(243, 234, 227, 0.95) 100%), 
+                        url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
             color: var(--text-color);
             margin: 0;
@@ -24,58 +27,33 @@
             align-items: center;
             padding: 50px 20px;
             -webkit-font-smoothing: antialiased;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* Formes de lumière en arrière-plan pour habiller le vide sans alourdir */
-        .bg-blur-1 {
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: rgba(181, 131, 106, 0.08); /* Rappel terracotta très diffus */
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .bg-blur-2 {
-            position: fixed;
-            bottom: 10%;
-            right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: rgba(163, 138, 123, 0.1); /* Rappel taupe du logo */
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
+        /* Le conteneur s'adapte pour s'ouvrir sur grand écran et briser l'effet de vide */
         .container { 
             width: 100%; 
-            max-width: 420px; 
+            max-width: 900px; /* Plus large pour permettre le côte-à-côte */
             text-align: center; 
-            position: relative;
-            z-index: 1;
         }
 
-        /* En-tête haut de gamme */
+        /* On garde une zone plus resserrée pour l'en-tête pour le côté chic */
+        .header-zone {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
         .logo { 
-            width: 90px; 
-            height: 90px;
+            width: 95px; 
+            height: 95px;
             border-radius: 50%; 
             margin-bottom: 20px; 
             object-fit: cover;
-            box-shadow: 0 8px 25px rgba(163, 138, 123, 0.2);
+            box-shadow: 0 8px 25px rgba(163, 138, 123, 0.25);
         }
         
         h1 { 
-            font-size: 1.4rem; 
-            letter-spacing: 4px; 
+            font-size: 1.5rem; 
+            letter-spacing: 5px; 
             margin-bottom: 8px; 
             text-transform: uppercase; 
             font-weight: 600;
@@ -99,38 +77,45 @@
         }
 
         .description-box { 
-            margin-bottom: 40px; 
-            font-size: 0.9rem; 
+            margin: 0 auto 40px auto; 
+            font-size: 0.95rem; 
             line-height: 1.7; 
             color: #1a1a1a; 
             font-weight: 500;
-            padding: 20px;
-            /* Verre dépoli blanc pur pour ressortir sur le fond crème */
-            background: rgba(255, 255, 255, 0.75); 
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 30px rgba(163, 138, 123, 0.08);
+            padding: 25px 30px;
+            max-width: 550px; /* S'élargit un peu pour mieux occuper l'espace */
+            background: rgba(255, 255, 255, 0.8); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 10px 35px rgba(163, 138, 123, 0.1);
         }
 
-        /* Cartes Propriétés */
+        /* Conteneur des cartes : Aligné en grille pour occuper la largeur sur PC */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
         .property-card {
             background: #ffffff; 
             border-radius: 24px; 
             overflow: hidden;
-            margin-bottom: 30px;
             display: block;
             text-decoration: none;
             color: inherit;
-            border: 1px solid rgba(181, 131, 106, 0.12); 
+            border: 1px solid rgba(181, 131, 106, 0.15); 
             box-shadow: 0 12px 35px rgba(163, 138, 123, 0.08);
             transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
 
         .property-card:hover { 
             transform: translateY(-6px); 
-            box-shadow: 0 20px 40px rgba(139, 92, 70, 0.15);
+            box-shadow: 0 22px 45px rgba(139, 92, 70, 0.18);
         }
 
         .property-image-wrapper {
@@ -179,13 +164,14 @@
             line-height: 1.5;
         }
 
-        /* Section Témoignages */
+        /* Section Témoignages encadrée au centre */
         .reviews-section {
-            margin-top: 40px;
+            margin: 40px auto 0 auto;
             padding: 35px 20px;
-            background: #a38a7b; /* Couleur corporate du logo */
+            background: #a38a7b; 
             border-radius: 24px;
             box-shadow: 0 15px 35px rgba(163, 138, 123, 0.25);
+            max-width: 500px; /* Reste compact et élégant pour les textes courts */
         }
 
         .reviews-section h3 {
@@ -249,7 +235,7 @@
             border-radius: 50%;
             display: inline-block;
             margin: 0 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
         }
         
         .dot.active {
@@ -257,7 +243,6 @@
             transform: scale(1.2);
         }
 
-        /* Pied de page épuré et parfaitement lisible */
         .footer-links {
             margin-top: 60px;
             display: flex;
@@ -275,9 +260,9 @@
             font-weight: 600;
             transition: all 0.3s ease;
             padding: 10px 24px;
-            background: rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             box-shadow: 0 4px 15px rgba(163, 138, 123, 0.05);
         }
 
@@ -285,47 +270,55 @@
             color: #ffffff;
             background: var(--accent-color);
             border-color: var(--accent-color);
-            box-shadow: 0 8px 20px rgba(181, 131, 106, 0.2);
+        }
+
+        /* CODE COMPORTEMENT ÉCRAN ORDINATEUR (Met les cartes côte à côte et remplit l'espace) */
+        @media (min-width: 768px) {
+            .properties-grid {
+                grid-template-columns: 1fr 1fr; /* 2 colonnes au lieu d'une seule longue ligne */
+                gap: 35px;
+            }
         }
     </style>
 </head>
 <body>
 
-<div class="bg-blur-1"></div>
-<div class="bg-blur-2"></div>
-
 <div class="container">
-    <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
-    <h1>A Casa Di Missiavu</h1>
-    <div class="subtitle">Collection Privée • Corse</div>
-    <div class="divider"></div>
+    <div class="header-zone">
+        <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
+        <h1>A Casa Di Missiavu</h1>
+        <div class="subtitle">Collection Privée • Corse</div>
+        <div class="divider"></div>
+    </div>
 
     <div class="description-box">
         Bienvenue dans notre sélection confidentielle de demeures de charme. 
         Des intérieurs soignés et des emplacements uniques entre mer et maquis pour vivre l'expérience corse absolue.
     </div>
 
-    <a href="#" class="property-card">
-        <div class="property-image-wrapper">
-            <img src="photo-porto-vecchio.jpg" alt="L'Échappée Porto-Vecchio">
-        </div>
-        <div class="property-details">
-            <div class="property-location">Porto-Vecchio</div>
-            <div class="property-title">L'Échappée</div>
-            <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
-        </div>
-    </a>
+    <div class="properties-grid">
+        <a href="#" class="property-card">
+            <div class="property-image-wrapper">
+                <img src="photo-porto-vecchio.jpg" alt="L'Échappée Porto-Vecchio">
+            </div>
+            <div class="property-details">
+                <div class="property-location">Porto-Vecchio</div>
+                <div class="property-title">L'Échappée</div>
+                <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
+            </div>
+        </a>
 
-    <a href="#" class="property-card">
-        <div class="property-image-wrapper">
-            <img src="sotta.jpg" alt="Demeure Sotta">
-        </div>
-        <div class="property-details">
-            <div class="property-location">Sotta</div>
-            <div class="property-title">Demeure Sotta</div>
-            <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
-        </div>
-    </a>
+        <a href="#" class="property-card">
+            <div class="property-image-wrapper">
+                <img src="sotta.jpg" alt="Demeure Sotta">
+            </div>
+            <div class="property-details">
+                <div class="property-location">Sotta</div>
+                <div class="property-title">Demeure Sotta</div>
+                <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
+            </div>
+        </a>
+    </div>
 
     <div class="reviews-section">
         <h3>L'expérience de nos hôtes</h3>
