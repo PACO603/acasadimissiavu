@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -8,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* On ajuste les textes pour qu'ils ressortent magnifiquement sur l'image */
             --text-color: #1a1a1a;
             --text-muted: #4a4a4a;
             --accent-color: #b5836a; /* Une touche terracotta chaleureuse */
@@ -16,8 +14,7 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* On nettoie le fond : ton image s'affiche sans voile blanc agressif */
-            background-image: url('fond-corse.jpg'); /* Remplace par le nom exact de ton image si besoin */
+            background-image: url('fond-corse.jpg'); /* Remplace par le nom exact de ton image */
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -72,30 +69,30 @@
         }
 
         .description-box { 
-    margin-bottom: 40px; 
-    font-size: 0.9rem; 
-    line-height: 1.7; 
-    color: #1a1a1a; /* Texte bien foncé */
-    font-weight: 500;
-    padding: 15px 20px;
-    /* Effet verre dépoli doux pour détacher le texte de la photo de fond */
-    background: rgba(255, 255, 255, 0.65); 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-}
-        /* Cartes Propriétés Crème/Sable (Plus de blanc chirurgical) */
+            margin-bottom: 40px; 
+            font-size: 0.9rem; 
+            line-height: 1.7; 
+            color: #1a1a1a; 
+            font-weight: 500;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Cartes Propriétés Crème/Sable */
         .property-card {
-            background: #fffaf7; /* Un ton crème très doux et chaleureux */
+            background: #fffaf7; 
             border-radius: 24px; 
             overflow: hidden;
             margin-bottom: 30px;
             display: block;
             text-decoration: none;
             color: inherit;
-            border: 1px solid rgba(181, 131, 106, 0.2); /* Fine bordure terracotta translucide */
+            border: 1px solid rgba(181, 131, 106, 0.2); 
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -131,7 +128,7 @@
             font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: var(--accent-color); /* Écrit en terracotta pour rappeler le Sud */
+            color: var(--accent-color); 
             font-weight: 600;
             margin-bottom: 6px;
         }
@@ -151,58 +148,66 @@
             line-height: 1.5;
         }
 
-        /* Section Témoignages accordée au logo */
-.reviews-section {
-    margin-top: 40px;
-    padding: 30px 20px;
-    background: #a38a7b; /* Le marron/taupe chic de votre logo */
-    border-radius: 24px;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
-}
+        /* Section Témoignages */
+        .reviews-section {
+            margin-top: 40px;
+            padding: 30px 20px;
+            background: #a38a7b; /* Le marron/taupe chic du logo */
+            border-radius: 24px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        }
 
-.reviews-section h3 {
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 25px;
-    font-weight: 600;
-    color: #ffffff;
-}
+        .reviews-section h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: #ffffff;
+            margin-top: 0;
+        }
 
-.slide {
-    font-size: 0.85rem;
-    line-height: 1.6;
-    font-style: italic;
-    color: #ffffff;
-    min-height: 70px;
-}
+        /* Cadre relatif obligatoire pour que les flèches absolues restent dedans */
+        .slider-container {
+            position: relative;
+            padding: 0 25px;
+        }
 
-.slide strong {
-    display: block;
-    margin-top: 12px;
-    font-style: normal;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: #fdf0e6; /* Rappel du fond crème clair du logo */
-}
+        .slide {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            font-style: italic;
+            color: #ffffff;
+            min-height: 70px;
+        }
 
-.nav-btn {
-    position: absolute;
-    top: 35%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    color: #ffffff;
-    opacity: 0.8;
-    transition: opacity 0.2s;
-    padding: 10px;
-}
-.nav-btn:hover { opacity: 1; }
-        .prev-btn { left: -10px; }
-        .next-btn { right: -10px; }
+        .slide strong {
+            display: block;
+            margin-top: 12px;
+            font-style: normal;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #fdf0e6; 
+        }
+
+        /* Flèches réapparues et bien centrées */
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            color: #ffffff;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            padding: 10px;
+        }
+        .nav-btn:hover { opacity: 1; }
+        .prev-btn { left: -15px; }
+        .next-btn { right: -15px; }
 
         .dots-container {
             margin-top: 20px;
@@ -223,26 +228,36 @@
             transform: scale(1.2);
         }
 
-        /* Bas de page */
+        /* Correction lisibilité bas de page : Ajout d'un fond protecteur élégant */
         .footer-links {
             margin-top: 50px;
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 15px;
+            width: 100%;
         }
 
         .footer-link {
             font-size: 0.75rem;
             text-decoration: none;
-            color: #2c2c2c;
+            color: #1a1a1a;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 600;
-            transition: color 0.2s;
-            text-shadow: 0 1px 1px rgba(255,255,255,0.4);
+            transition: all 0.2s;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.5); /* Floutage blanc transparent pour couper le fond */
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
-        .footer-link:hover { color: var(--accent-color); }
+        .footer-link:hover { 
+            color: #ffffff;
+            background: var(--accent-color);
+        }
     </style>
 </head>
 <body>
