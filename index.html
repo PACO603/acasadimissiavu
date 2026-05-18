@@ -7,28 +7,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fcf8f5; /* Un blanc cassé/crème très doux et chaleureux */
-            --card-bg: #ffffff;
+            --bg-color: #eddcd2; /* Fond sable/lin chaleureux */
+            --card-bg: #fff8f5; /* Cartes crème doux */
             --text-color: #2c2c2c;
             --text-muted: #757575;
             --accent-color: #1a1a1a;
         }
 
-       body {
-    font-family: 'Montserrat', sans-serif;
-    /* Remplace 'fond-corse.jpg' par le nom de ton image de fond */
-    background: linear-gradient(rgba(252, 248, 245, 0.85), rgba(252, 248, 245, 0.85)), url('fond-corse.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    color: var(--text-color);
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 50px 20px;
-    -webkit-font-smoothing: antialiased;
-}
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+            -webkit-font-smoothing: antialiased;
+        }
+
         .container { 
             width: 100%; 
             max-width: 420px; 
@@ -65,7 +62,7 @@
         .divider {
             width: 40px;
             height: 1px;
-            background-color: #e0e0e0;
+            background-color: rgba(0,0,0,0.15);
             margin: 0 auto 25px auto;
         }
 
@@ -78,28 +75,28 @@
             padding: 0 10px;
         }
 
-        /* Nouvelles Cartes Multi-biens Inspirées & Originales */
+        /* Cartes Propriétés */
         .property-card {
             background: var(--card-bg);
-            border-radius: 24px; /* Bords très arrondis comme sur l'exemple */
+            border-radius: 24px; 
             overflow: hidden;
             margin-bottom: 25px;
             display: block;
             text-decoration: none;
             color: inherit;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            border: 1px solid #cca48e;
+            box-shadow: 0 12px 30px rgba(139, 92, 70, 0.15);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .property-card:hover { 
             transform: translateY(-4px); 
-            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 16px 40px rgba(139, 92, 70, 0.25);
         }
 
-        /* Image verticale / portrait */
         .property-image-wrapper {
             width: 100%;
-            height: 280px; /* Hauteur généreuse pour mettre en valeur le bien */
+            height: 280px; 
             overflow: hidden;
             position: relative;
         }
@@ -115,7 +112,6 @@
             transform: scale(1.03);
         }
 
-        /* Contenu sous l'image */
         .property-details { 
             padding: 20px 22px; 
             text-align: left; 
@@ -144,11 +140,13 @@
             line-height: 1.4;
         }
 
-        /* Section Témoignages Épurée */
+        /* Section Témoignages Terracotta */
         .reviews-section {
             margin-top: 45px;
             padding: 25px 20px;
-            background: none;
+            background: #b5836a; 
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .reviews-section h3 {
@@ -156,7 +154,8 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 25px;
-            font-weight: 500;
+            font-weight: 600;
+            color: #ffffff;
         }
         
         .slider-container {
@@ -168,7 +167,7 @@
             font-size: 0.85rem;
             line-height: 1.6;
             font-style: italic;
-            color: #4a4a4a;
+            color: #ffffff;
             min-height: 70px;
         }
 
@@ -179,7 +178,7 @@
             font-size: 0.75rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: var(--text-muted);
+            color: #f5e6de;
         }
 
         .nav-btn {
@@ -190,11 +189,11 @@
             border: none;
             cursor: pointer;
             font-size: 16px;
-            color: #b0b0b0;
-            transition: color 0.2s;
+            color: #ffffff;
+            transition: opacity 0.2s;
             padding: 10px;
         }
-        .nav-btn:hover { color: var(--accent-color); }
+        .nav-btn:hover { opacity: 0.7; }
         .prev-btn { left: -10px; }
         .next-btn { right: -10px; }
 
@@ -205,7 +204,7 @@
         .dot {
             height: 5px;
             width: 5px;
-            background-color: #dcdcdc;
+            background-color: rgba(255, 255, 255, 0.4);
             border-radius: 50%;
             display: inline-block;
             margin: 0 4px;
@@ -213,11 +212,11 @@
         }
         
         .dot.active {
-            background-color: var(--accent-color);
+            background-color: #ffffff;
             transform: scale(1.2);
         }
 
-        /* Bas de page & Réseaux sociaux */
+        /* Bas de page */
         .footer-links {
             margin-top: 50px;
             display: flex;
@@ -235,9 +234,7 @@
             transition: color 0.2s;
         }
 
-        .footer-link:hover {
-            color: var(--accent-color);
-        }
+        .footer-link:hover { color: var(--accent-color); }
     </style>
 </head>
 <body>
