@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Casa Di Missiavu - Liens</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <title>A Casa Di Missiavu - Collection Corse</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #fdf0e6; /* La couleur de fond de votre image */
+            --bg-color: #fcf8f5; /* Un blanc cassé/crème très doux et chaleureux */
             --card-bg: #ffffff;
-            --text-color: #333;
-            --accent-color: #000;
+            --text-color: #2c2c2c;
+            --text-muted: #757575;
+            --accent-color: #1a1a1a;
         }
 
         body {
@@ -21,119 +22,308 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 50px 20px;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .container { width: 100%; max-width: 450px; text-align: center; }
+        .container { 
+            width: 100%; 
+            max-width: 420px; 
+            text-align: center; 
+        }
 
-        .logo { width: 100px; border-radius: 50%; margin-bottom: 15px; }
-        h1 { font-size: 1.2rem; letter-spacing: 2px; margin-bottom: 20px; }
+        /* En-tête */
+        .logo { 
+            width: 85px; 
+            height: 85px;
+            border-radius: 50%; 
+            margin-bottom: 20px; 
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+        }
+        
+        h1 { 
+            font-size: 1.35rem; 
+            letter-spacing: 4px; 
+            margin-bottom: 10px; 
+            text-transform: uppercase; 
+            font-weight: 600; 
+        }
 
-        /* Style des boutons/liens */
-        .link-card {
+        .subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+            font-weight: 400;
+        }
+
+        .divider {
+            width: 40px;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 0 auto 25px auto;
+        }
+
+        .description-box { 
+            margin-bottom: 40px; 
+            font-size: 0.9rem; 
+            line-height: 1.7; 
+            color: var(--text-muted);
+            font-weight: 300;
+            padding: 0 10px;
+        }
+
+        /* Nouvelles Cartes Multi-biens Inspirées & Originales */
+        .property-card {
             background: var(--card-bg);
-            border-radius: 20px;
-            padding: 15px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
+            border-radius: 24px; /* Bords très arrondis comme sur l'exemple */
+            overflow: hidden;
+            margin-bottom: 25px;
+            display: block;
             text-decoration: none;
             color: inherit;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
-            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .link-card:hover { transform: scale(1.02); }
-        .link-card img { width: 60px; height: 60px; border-radius: 12px; margin-right: 15px; object-fit: cover; }
-        .link-info { text-align: left; }
-        .link-title { font-weight: 500; font-size: 0.95rem; }
-        .link-desc { font-size: 0.8rem; opacity: 0.7; margin-top: 4px; }
+        .property-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        }
 
-        /* Section Texte/Avis */
-        .description-box { margin: 30px 0; font-size: 0.9rem; line-height: 1.5; font-style: italic; }
+        /* Image verticale / portrait */
+        .property-image-wrapper {
+            width: 100%;
+            height: 280px; /* Hauteur généreuse pour mettre en valeur le bien */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .property-card img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .property-card:hover img {
+            transform: scale(1.03);
+        }
+
+        /* Contenu sous l'image */
+        .property-details { 
+            padding: 20px 22px; 
+            text-align: left; 
+        }
         
-        .reviews-slider {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 15px;
-            border-radius: 15px;
-            margin-top: 20px;
+        .property-location {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 6px;
+        }
+
+        .property-title { 
+            font-weight: 600; 
+            font-size: 1.05rem; 
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+        }
+        
+        .property-desc { 
+            font-size: 0.8rem; 
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        /* Section Témoignages Épurée */
+        .reviews-section {
+            margin-top: 45px;
+            padding: 25px 20px;
+            background: none;
+        }
+
+        .reviews-section h3 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .slider-container {
+            position: relative;
+            padding: 0 35px;
+        }
+
+        .slide {
             font-size: 0.85rem;
+            line-height: 1.6;
+            font-style: italic;
+            color: #4a4a4a;
+            min-height: 70px;
+        }
+
+        .slide strong {
+            display: block;
+            margin-top: 10px;
+            font-style: normal;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        .nav-btn {
+            position: absolute;
+            top: 35%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: #b0b0b0;
+            transition: color 0.2s;
+            padding: 10px;
+        }
+        .nav-btn:hover { color: var(--accent-color); }
+        .prev-btn { left: -10px; }
+        .next-btn { right: -10px; }
+
+        .dots-container {
+            margin-top: 20px;
+        }
+
+        .dot {
+            height: 5px;
+            width: 5px;
+            background-color: #dcdcdc;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 4px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .dot.active {
+            background-color: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        /* Bas de page & Réseaux sociaux */
+        .footer-links {
+            margin-top: 50px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-link {
+            font-size: 0.75rem;
+            text-decoration: none;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-color);
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <img src="photo-logo.jpg" alt="Logo" class="logo">
-        <h1>ACASADIMISSIAVU</h1>
+<div class="container">
+    <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
+    <h1>A Casa Di Missiavu</h1>
+    <div class="subtitle">Collection Privée • Corse</div>
+    <div class="divider"></div>
 
-        <div class="description-box">
-            Bienvenue dans nos demeures d'exception entre mer et montagne. 
-            Découvrez nos locations soigneusement sélectionnées pour vos séjours en Corse.
+    <div class="description-box">
+        Bienvenue dans notre sélection confidentielle de demeures de charme. 
+        Des intérieurs soignés et des emplacements uniques entre mer et maquis pour vivre l'expérience corse absolue.
+    </div>
+
+    <a href="#" class="property-card">
+        <div class="property-image-wrapper">
+            <img src="photo-porto-vecchio.jpg" alt="L'Échappée Porto-Vecchio">
+        </div>
+        <div class="property-details">
+            <div class="property-location">Porto-Vecchio</div>
+            <div class="property-title">L'Échappée</div>
+            <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
+        </div>
+    </a>
+
+    <a href="#" class="property-card">
+        <div class="property-image-wrapper">
+            <img src="sotta.jpg" alt="Demeure Sotta">
+        </div>
+        <div class="property-details">
+            <div class="property-location">Sotta</div>
+            <div class="property-title">Demeure Sotta</div>
+            <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
+        </div>
+    </a>
+
+    <div class="reviews-section">
+        <h3>L'expérience de nos hôtes</h3>
+        
+        <div class="slider-container">
+            <div class="slide" style="display: block;">
+                <p>"Un séjour hors du temps. La demeure à Sotta est un véritable havre de paix où chaque détail est pensé avec goût."</p>
+                <strong>— Marie D.</strong>
+            </div>
+            
+            <div class="slide" style="display: none;">
+                <p>"La vue depuis l'appartement de Porto-Vecchio est tout simplement magique au réveil. Accueil remarquable."</p>
+                <strong>— Jean-Marc P.</strong>
+            </div>
+            
+            <div class="slide" style="display: none;">
+                <p>"Propreté irréprochable, design épuré et conseils précieux pour découvrir la région. Nous reviendrons sans hésiter."</p>
+                <strong>— Sophie L.</strong>
+            </div>
+
+            <button class="nav-btn prev-btn" onclick="changeSlide(-1)">❮</button>
+            <button class="nav-btn next-btn" onclick="changeSlide(1)">❯</button>
         </div>
 
-        <a href="#" class="link-card">
-            <img src="photo-porto-vecchio.jpg" alt="Appartement">
-            <div class="link-info">
-                <div class="link-title">Appartement · Porto-Vecchio</div>
-                <div class="link-desc">1 chambre · Vue mer imprenable</div>
-            </div>
-        </a>
-
-        <a href="#" class="link-card">
-            <img src="sotta.jpg" alt="Villa Sotta">
-            <div class="link-info">
-                <div class="link-title">Villa · Sotta · ★5.0</div>
-                <div class="link-desc">2 chambres · Piscine privée · 3 lits</div>
-            </div>
-        </a>
-
-        <div class="reviews-slider">
-            <h3 style="margin-top:0; font-size: 1rem;">Ce que nos clients disent</h3>
-            
-            <div class="slider-container" style="position: relative; padding: 10px 40px;">
-                <div class="slide" style="display: block;">
-                    <p>"Un séjour inoubliable, la villa à Sotta est un vrai paradis ! Tout était parfait."</p>
-                    <strong>- Marie D.</strong>
-                </div>
-                
-                <div class="slide" style="display: none;">
-                    <p>"L'appartement à Porto-Vecchio a une vue incroyable. Accueil très chaleureux."</p>
-                    <strong>- Jean-Marc P.</strong>
-                </div>
-
-                <div class="slide" style="display: none;">
-                    <p>"Propreté impeccable et décoration avec beaucoup de goût. On reviendra !"</p>
-                    <strong>- Sophie L.</strong>
-                </div>
-
-                <button onclick="changeSlide(-1)" style="position: absolute; left: 0; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 20px;">❮</button>
-                <button onclick="changeSlide(1)" style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 20px;">❯</button>
-            </div>
-
-            <div style="margin-top: 10px;">
-                <span class="dot" style="height: 8px; width: 8px; background-color: #333; border-radius: 50%; display: inline-block; margin: 0 3px;"></span>
-                <span class="dot" style="height: 8px; width: 8px; background-color: #bbb; border-radius: 50%; display: inline-block; margin: 0 3px;"></span>
-                <span class="dot" style="height: 8px; width: 8px; background-color: #bbb; border-radius: 50%; display: inline-block; margin: 0 3px;"></span>
-            </div>
+        <div class="dots-container">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
         </div>
+    </div>
 
-    </div> <script>
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
+    <div class="footer-links">
+        <a href="#" class="footer-link">Instagram</a>
+        <a href="mailto:contact@exemple.com" class="footer-link">Contact</a>
+    </div>
 
-        function changeSlide(direction) {
-            slides[currentSlide].style.display = 'none';
-            dots[currentSlide].style.backgroundColor = '#bbb';
-            
-            currentSlide = (currentSlide + direction + slides.length) % slides.length;
-            
-            slides[currentSlide].style.display = 'block';
-            dots[currentSlide].style.backgroundColor = '#333';
-        }
-    </script>
+</div>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function changeSlide(direction) {
+        slides[currentSlide].style.display = 'none';
+        dots[currentSlide].classList.remove('active');
+
+        currentSlide = (currentSlide + direction + slides.length) % slides.length;
+
+        slides[currentSlide].style.display = 'block';
+        dots[currentSlide].classList.add('active');
+    }
+</script>
 
 </body>
 </html>
