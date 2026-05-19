@@ -102,7 +102,7 @@
             box-shadow: 0 12px 30px rgba(58, 49, 44, 0.06);
         }
 
-        /* Cartes Propriétés (Nouveaux effets au survol) */
+        /* Cartes Propriétés avec effets de survol */
         .property-card {
             background: #ffffff; 
             border-radius: 24px; 
@@ -164,7 +164,6 @@
             transition: transform 0.3s ease;
         }
 
-        /* Effet de couleur et flèche au survol de la carte globale */
         .property-card:hover .property-cta {
             color: var(--accent-color);
             border-color: var(--accent-color);
@@ -174,7 +173,7 @@
             transform: translateX(4px);
         }
 
-        /* Section Témoignages */
+        /* Section Témoignages (Slider Intégré) */
         .reviews-section {
             margin-top: 35px; width: 100%; box-sizing: border-box; padding: 40px 25px; background: #a38a7b; border-radius: 24px; box-shadow: 0 15px 35px rgba(58, 49, 44, 0.18);
         }
@@ -191,9 +190,7 @@
         .footer-links { margin-top: 60px; display: flex; justify-content: center; gap: 15px; width: 100%; }
         .footer-link { font-size: 0.75rem; text-decoration: none; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; padding: 12px 26px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.5); }
 
-        /* =========================================
-           STYLE DES MODALES
-        ============================================ */
+        /* Style des Modales */
         .page-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -242,7 +239,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Galerie Photos Slider dans les modales */
+        /* Galerie Photos Multiples */
         .page-gallery { width: 100%; height: 280px; position: relative; overflow: hidden; }
         .modal-slides { width: 100%; height: 100%; display: flex; transition: transform 0.4s ease-in-out; }
         .modal-slides img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
@@ -261,10 +258,8 @@
         .page-title { font-size: 1.4rem; font-weight: 700; color: var(--brand-dark); margin: 0 0 5px 0; }
         .page-location { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-weight: 600; margin-bottom: 20px; }
         
-        /* Caractéristiques (Badges) */
-        .features-grid {
-            display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px;
-        }
+        /* Badges caractéristiques */
+        .features-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
         .feature-badge {
             background: #ffffff;
             border: 1px solid rgba(181, 131, 106, 0.2);
@@ -277,7 +272,7 @@
 
         .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 30px; }
 
-        /* Planning de Réservation Interactif */
+        /* Calendriers Optis */
         .calendar-section { margin-bottom: 30px; }
         .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 5px; }
         .calendar-subtitle { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 15px; }
@@ -289,22 +284,18 @@
         }
         .cal-day-name { font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--accent-color); padding-bottom: 5px; }
         
-        /* États des jours du calendrier */
         .cal-day { font-size: 0.78rem; text-align: center; padding: 8px 0; border-radius: 8px; font-weight: 500; background: #fafafa; color: #ccc; }
         .cal-day.available { background: #f4ebe6; color: var(--brand-dark); font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .cal-day.available:hover { background: var(--accent-color); color: white; }
         .cal-day.booked { background: #f5f5f5; color: #b0b0b0; text-decoration: line-through; font-weight: 300; cursor: not-allowed; }
         
-        /* Sélection dynamique */
         .cal-day.selected { background: var(--accent-color) !important; color: #ffffff !important; }
         .cal-day.in-range { background: rgba(181, 131, 106, 0.25) !important; color: var(--brand-dark) !important; border-radius: 0; }
 
-        /* Légende Calendrier */
         .calendar-legend { display: flex; gap: 15px; margin-top: 10px; font-size: 0.72rem; padding-left: 5px; }
         .legend-item { display: flex; align-items: center; gap: 5px; }
         .legend-color { width: 10px; height: 10px; border-radius: 3px; }
 
-        /* Bouton de réservation */
         .book-btn {
             display: block; width: 100%; padding: 15px; box-sizing: border-box;
             background: var(--brand-dark); color: #ffffff;
@@ -357,15 +348,15 @@
         <div class="slider-container">
             <div class="slide" style="display: block;">
                 <p>"Un séjour hors du temps. La demeure à Sotta est un véritable havre de paix où chaque détail est pensé avec goût."</p>
-                <strong>— Marie D.</strong>
+                <strong>— Marie D. (via Airbnb)</strong>
             </div>
             <div class="slide" style="display: none;">
                 <p>"La vue depuis l'appartement de Porto-Vecchio est tout simplement magique au réveil. Accueil remarquable."</p>
-                <strong>— Jean-Marc P.</strong>
+                <strong>— Jean-Marc P. (via Airbnb)</strong>
             </div>
             <div class="slide" style="display: none;">
                 <p>"Propreté irréprochable, design épuré et conseils précieux pour découvrir la région. Nous reviendrons sans hésiter."</p>
-                <strong>— Sophie L.</strong>
+                <strong>— Sophie L. (via Airbnb)</strong>
             </div>
             <button class="nav-btn prev-btn" onclick="event.stopPropagation(); changeSlide(-1)">❮</button>
             <button class="nav-btn next-btn" onclick="event.stopPropagation(); changeSlide(1)">❯</button>
@@ -390,7 +381,6 @@
             <div class="modal-slides" id="slides-porto">
                 <img src="photo-porto-vecchio.jpg" alt="L'Échappée vue 1">
                 <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Intérieur">
-                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Terrasse">
             </div>
             <button class="gallery-btn gallery-prev" onclick="moveGallery('porto', -1)">❮</button>
             <button class="gallery-btn gallery-next" onclick="moveGallery('porto', 1)">❯</button>
@@ -409,7 +399,7 @@
             </div>
 
             <p class="page-text">
-                Niché sur les hauteurs de Porto-Vecchio, ce duplex de très grand standing offre une immersion exclusive face à la mer. Entièrement pensé avec des matériaux nobles, il combine design contemporain et confort absolu pour une parenthèse inoubliable à deux.
+                Niché sur les hauteurs de Porto-Vecchio, ce duplex de très grand standing offre une immersion exclusive face à la mer.
             </p>
 
             <div class="calendar-section">
@@ -417,11 +407,11 @@
                 <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
                 <div class="calendar-grid" id="cal-porto">
                     <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
-                    <div class="cal-day booked" data-day="1">1</div><div class="cal-day booked" data-day="2">2</div><div class="cal-day booked" data-day="3">3</div>
-                    <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day booked" data-day="7">7</div><div class="cal-day booked" data-day="8">8</div><div class="cal-day booked" data-day="9">9</div><div class="cal-day booked" data-day="10">10</div>
-                    <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day booked" data-day="16">16</div><div class="cal-day booked" data-day="17">17</div>
+                    <div class="cal-day available" data-day="1">1</div><div class="cal-day available" data-day="2">2</div><div class="cal-day available" data-day="3">3</div>
+                    <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day available" data-day="7">7</div><div class="cal-day available" data-day="8">8</div><div class="cal-day available" data-day="9">9</div><div class="cal-day available" data-day="10">10</div>
+                    <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day available" data-day="16">16</div><div class="cal-day available" data-day="17">17</div>
                     <div class="cal-day available" data-day="18">18</div><div class="cal-day available" data-day="19">19</div><div class="cal-day available" data-day="20">20</div><div class="cal-day available" data-day="21">21</div><div class="cal-day available" data-day="22">22</div><div class="cal-day available" data-day="23">23</div><div class="cal-day available" data-day="24">24</div>
-                    <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day booked" data-day="27">27</div><div class="cal-day booked" data-day="28">28</div><div class="cal-day booked" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
+                    <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day available" data-day="27">27</div><div class="cal-day available" data-day="28">28</div><div class="cal-day available" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
                 </div>
                 <div class="calendar-legend">
                     <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
@@ -443,7 +433,6 @@
             <div class="modal-slides" id="slides-sotta">
                 <img src="sotta.jpg" alt="Demeure Sotta vue 1">
                 <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Piscine">
-                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Salon">
             </div>
             <button class="gallery-btn gallery-prev" onclick="moveGallery('sotta', -1)">❮</button>
             <button class="gallery-btn gallery-next" onclick="moveGallery('sotta', 1)">❯</button>
@@ -462,7 +451,7 @@
             </div>
 
             <p class="page-text">
-                Une bergerie authentique en pierres de Corse nichée au cœur du maquis odorant. Offrant une intimité totale, cette demeure d'exception dispose de sa piscine privée chauffée et de prestations haut de gamme, à seulement quelques minutes des plages sauvages et de l'aéroport.
+                Une bergerie authentique en pierres de Corse nichée au cœur du maquis odorant.
             </p>
 
             <div class="calendar-section">
@@ -471,9 +460,9 @@
                 <div class="calendar-grid" id="cal-sotta">
                     <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
                     <div class="cal-day available" data-day="1">1</div><div class="cal-day available" data-day="2">2</div><div class="cal-day available" data-day="3">3</div>
-                    <div class="cal-day booked" data-day="4">4</div><div class="cal-day booked" data-day="5">5</div><div class="cal-day booked" data-day="6">6</div><div class="cal-day booked" data-day="7">7</div><div class="cal-day booked" data-day="8">8</div><div class="cal-day booked" data-day="9">9</div><div class="cal-day booked" data-day="10">10</div>
+                    <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day available" data-day="7">7</div><div class="cal-day available" data-day="8">8</div><div class="cal-day available" data-day="9">9</div><div class="cal-day available" data-day="10">10</div>
                     <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day available" data-day="16">16</div><div class="cal-day available" data-day="17">17</div>
-                    <div class="cal-day booked" data-day="18">18</div><div class="cal-day booked" data-day="19">19</div><div class="cal-day booked" data-day="20">20</div><div class="cal-day booked" data-day="21">21</div><div class="cal-day booked" data-day="22">22</div><div class="cal-day booked" data-day="23">23</div><div class="cal-day booked" data-day="24">24</div>
+                    <div class="cal-day available" data-day="18">18</div><div class="cal-day available" data-day="19">19</div><div class="cal-day available" data-day="20">20</div><div class="cal-day available" data-day="21">21</div><div class="cal-day available" data-day="22">22</div><div class="cal-day available" data-day="23">23</div><div class="cal-day available" data-day="24">24</div>
                     <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day available" data-day="27">27</div><div class="cal-day available" data-day="28">28</div><div class="cal-day available" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
                 </div>
                 <div class="calendar-legend">
@@ -487,93 +476,13 @@
         </div>
     </div>
 </div>
-        // URL de ton calendrier Airbnb (remplace avec ton vrai lien exporté)
-const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
-
-// Fonction pour récupérer et analyser le calendrier Airbnb
-async function synchroniserAvecAirbnb(propertyId, icalUrl) {
-    if (icalUrl === "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI") return; // Ne fait rien si le lien n'est pas configuré
-
-    try {
-        // Utilisation d'un proxy gratuit pour éviter les blocages de sécurité (CORS)
-        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(icalUrl);
-        const response = await fetch(proxyUrl);
-        const data = await response.text();
-
-        // Analyse rudimentaire du fichier iCal pour trouver les dates de début (DTSTART) et fin (DTEND)
-        const lignes = data.split('\n');
-        let datesReservees = [];
-        let debutTemp = null;
-
-        lignes.forEach(ligne => {
-            if (ligne.startsWith('DTSTART')) {
-                // Extrait la date au format AAAAMMJJ
-                const dateStr = ligne.split(':')[1].substring(0, 8);
-                debutTemp = parseICalDate(dateStr);
-            }
-            if (ligne.startsWith('DTEND') && debutTemp) {
-                const dateStr = ligne.split(':')[1].substring(0, 8);
-                const finTemp = parseICalDate(dateStr);
-                
-                // On ajoute toutes les dates comprises entre le début et la fin du séjour
-                let courante = new Date(debutTemp);
-                while (courante < finTemp) {
-                    // On ne garde que les réservations de Mai 2026 pour ton calendrier actuel
-                    if (courante.getFullYear() === 2026 && courante.getMonth() === 4) { // 4 = Mai en JS
-                        datesReservees.push(courante.getDate());
-                    }
-                    courante.setDate(courante.getDate() + 1);
-                }
-                debutTemp = null;
-            }
-        });
-
-        // Appliquer les changements sur le calendrier HTML
-        mettreAJourCalendrierHTML(propertyId, datesReservees);
-
-    } catch (erreur) {
-        console.error("Erreur lors de la synchronisation Airbnb pour " + propertyId + ":", erreur);
-    }
-}
-
-// Fonction utilitaire pour transformer "20260515" en objet Date JavaScript
-function parseICalDate(dateStr) {
-    const annee = parseInt(dateStr.substring(0, 4));
-    const mois = parseInt(dateStr.substring(4, 6)) - 1;
-    const jour = parseInt(dateStr.substring(6, 8));
-    return new Date(annee, mois, jour);
-}
-
-// Fonction qui modifie les classes de ton calendrier HTML
-function mettreAJourCalendrierHTML(propertyId, joursOccupes) {
-    const container = document.getElementById(`cal-${propertyId}`);
-    const allDays = container.querySelectorAll('.cal-day');
-
-    allDays.forEach(day => {
-        const dayNum = parseInt(day.getAttribute('data-day'));
-        if (!isNaN(dayNum)) {
-            if (joursOccupes.includes(dayNum)) {
-                // Le jour est réservé sur Airbnb -> On le bloque
-                day.className = "cal-day booked";
-            } else {
-                // Le jour est libre -> On le rend disponible et cliquable
-                day.className = "cal-day available";
-            }
-        }
-    });
-
-    // Ré-initialiser la logique de clic sur les nouveaux jours disponibles
-    initCalendar(propertyId);
-}
-
-// Lancement automatique de la synchronisation au chargement de la page
-window.addEventListener('DOMContentLoaded', () => {
-    synchroniserAvecAirbnb('porto', AIRBNB_ICAL_URL_PORTO);
-    // Tu pourras faire de même pour Sotta : synchroniserAvecAirbnb('sotta', AIRBNB_ICAL_URL_SOTTA);
-});
 
 <script>
-    // 1. LOGIQUE DU SLIDER D'AVIS (PRINCIPAL)
+    // 1. LIENS AIRBNB ICAL (Insère tes vrais liens ici)
+    const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
+    const AIRBNB_ICAL_URL_SOTTA = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
+
+    // 2. LOGIQUE DU SLIDER D'AVIS
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -586,7 +495,7 @@ window.addEventListener('DOMContentLoaded', () => {
         dots[currentSlide].classList.add('active');
     }
 
-    // 2. OUVERTURE / FERMETURE DES MODALES
+    // 3. GESTION DES MODALES
     function openPage(id) {
         document.getElementById(id).style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -597,75 +506,58 @@ window.addEventListener('DOMContentLoaded', () => {
         document.body.style.overflow = 'auto';
     }
 
-    // 3. LOGIQUE DES SLIDERS PHOTOS DANS LES MODALES
+    // 4. NAVIGATION GALERIES PHOTOS MODALES
     const galleryIndices = { porto: 0, sotta: 0 };
-
     function moveGallery(property, direction) {
         const slider = document.getElementById(`slides-${property}`);
         const totalImages = slider.querySelectorAll('img').length;
-        
         galleryIndices[property] = (galleryIndices[property] + direction + totalImages) % totalImages;
-        const transformValue = -(galleryIndices[property] * 100);
-        slider.style.transform = `translateX(${transformValue}%)`;
+        slider.style.transform = `translateX(${-galleryIndices[property] * 100}%)`;
     }
 
-    // 4. LOGIQUE DES CALENDRIERS INTERACTIFS (Sélection de plages de dates)
-    const bookingDates = {
-        porto: { start: null, end: null },
-        sotta: { start: null, end: null }
-    };
+    // 5. SELECTION DES DATES (Calendrier Interactif)
+    const bookingDates = { porto: { start: null, end: null }, sotta: { start: null, end: null } };
 
     function initCalendar(propertyId) {
         const container = document.getElementById(`cal-${propertyId}`);
         const days = container.querySelectorAll('.cal-day.available');
         const bookBtn = document.getElementById(`btn-book-${propertyId}`);
-        const initialSubject = bookBtn.getAttribute('href');
 
+        // Nettoyage des événements existants
         days.forEach(day => {
+            const clone = day.cloneNode(true);
+            day.parentNode.replaceChild(clone, day);
+        });
+
+        const freshDays = container.querySelectorAll('.cal-day.available');
+        freshDays.forEach(day => {
             day.addEventListener('click', () => {
                 const dayNum = parseInt(day.getAttribute('data-day'));
                 let data = bookingDates[propertyId];
 
-                // Logique de sélection : premier clic = début, second clic = fin
                 if (!data.start || (data.start && data.end)) {
-                    data.start = dayNum;
-                    data.end = null;
+                    data.start = dayNum; data.end = null;
                 } else if (dayNum < data.start) {
                     data.start = dayNum;
                 } else {
-                    // Vérifier s'il y a un jour réservé (booked) entre le début et la fin choisie
                     let hasBlock = false;
                     for (let i = data.start; i <= dayNum; i++) {
-                        if (container.querySelector(`[data-day="${i}"].booked`)) {
-                            hasBlock = true;
-                        }
+                        if (container.querySelector(`[data-day="${i}"].booked`)) hasBlock = true;
                     }
-                    if (!hasBlock) {
-                        data.end = dayNum;
-                    } else {
-                        // Si un jour bloqué fait obstacle, on recommence la sélection au jour cliqué
-                        data.start = dayNum;
-                    }
+                    if (!hasBlock) data.end = dayNum; else data.start = dayNum;
                 }
 
-                // Rafraîchir l'affichage visuel des classes CSS
-                const allDays = container.querySelectorAll('.cal-day');
-                allDays.forEach(d => {
+                container.querySelectorAll('.cal-day').forEach(d => {
                     const dNum = parseInt(d.getAttribute('data-day'));
                     d.classList.remove('selected', 'in-range');
-                    
                     if (data.start && dNum === data.start) d.classList.add('selected');
                     if (data.end && dNum === data.end) d.classList.add('selected');
-                    if (data.start && data.end && dNum > data.start && dNum < data.end) {
-                        d.classList.add('in-range');
-                    }
+                    if (data.start && data.end && dNum > data.start && dNum < data.end) d.classList.add('in-range');
                 });
 
-                // Mettre à jour dynamiquement l'objet de l'e-mail avec les dates choisies
                 if (data.start) {
                     let dateStr = `du ${data.start} Mai 2026`;
                     if (data.end) dateStr += ` au ${data.end} Mai 2026`;
-                    
                     const propertyName = propertyId === 'porto' ? "L'Echappée" : "Demeure Sotta";
                     bookBtn.setAttribute('href', `mailto:contact@exemple.com?subject=Demande de réservation - ${propertyName} (${dateStr})`);
                 }
@@ -673,7 +565,60 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Initialisation des calendriers au chargement du script
-    initCalendar('porto');
-    initCalendar('sotta');
+    // 6. SYNCHRONISATION OPTIMISÉE AIRBNB iCAL
+    async function synchroniserAvecAirbnb(propertyId, icalUrl) {
+        if (!icalUrl || icalUrl.includes("URL_DE_TON_LIEN_ICAL_AIRBNB_ICI")) {
+            initCalendar(propertyId);
+            return;
+        }
+
+        try {
+            const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(icalUrl);
+            const response = await fetch(proxyUrl);
+            const data = await response.text();
+
+            const lignes = data.split('\n');
+            let datesReservees = [];
+            let debutTemp = null;
+
+            lignes.forEach(ligne => {
+                if (ligne.startsWith('DTSTART')) {
+                    debutTemp = parseICalDate(ligne.split(':')[1].substring(0, 8));
+                }
+                if (ligne.startsWith('DTEND') && debutTemp) {
+                    const finTemp = parseICalDate(ligne.split(':')[1].substring(0, 8));
+                    let courante = new Date(debutTemp);
+                    while (courante < finTemp) {
+                        if (courante.getFullYear() === 2026 && courante.getMonth() === 4) { // Mai 2026
+                            datesReservees.push(courante.getDate());
+                        }
+                        courante.setDate(courante.getDate() + 1);
+                    }
+                    debutTemp = null;
+                }
+            });
+
+            const container = document.getElementById(`cal-${propertyId}`);
+            container.querySelectorAll('.cal-day').forEach(day => {
+                const dayNum = parseInt(day.getAttribute('data-day'));
+                if (!isNaN(dayNum)) {
+                    day.className = datesReservees.includes(dayNum) ? "cal-day booked" : "cal-day available";
+                }
+            });
+
+        } catch (erreur) {
+            console.error("Erreur synchro Airbnb " + propertyId + ":", erreur);
+        } finally {
+            initCalendar(propertyId); // Initialise la sélection dans tous les cas
+        }
+    }
+
+    function parseICalDate(dateStr) {
+        return new Date(parseInt(dateStr.substring(0, 4)), parseInt(dateStr.substring(4, 6)) - 1, parseInt(dateStr.substring(6, 8)));
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+        synchroniserAvecAirbnb('porto', AIRBNB_ICAL_URL_PORTO);
+        synchroniserAvecAirbnb('sotta', AIRBNB_ICAL_URL_SOTTA);
+    });
 </script></body></html>
