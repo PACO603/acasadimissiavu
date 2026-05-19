@@ -245,57 +245,119 @@
 
         .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
 
-        /* Style des Sections Avis sur-mesure */
-        .reviews-section {
+        /* Structure Globale du Carrousel d'Avis (Main & Modales) */
+        .reviews-carousel-container {
             margin: 30px 0;
-            border-top: 1px solid rgba(181, 131, 106, 0.15);
-            padding-top: 25px;
+            position: relative;
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(181, 131, 106, 0.15);
+            border-radius: 20px;
+            padding: 25px 20px 15px 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(58, 49, 44, 0.04);
         }
-        .reviews-section h4 {
+        .reviews-carousel-container h4 {
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             color: var(--brand-dark);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin: 0 0 15px 0;
+            text-align: center;
         }
-        .review-card {
-            background: #ffffff;
-            border: 1px solid rgba(181, 131, 106, 0.1);
-            border-radius: 16px;
-            padding: 18px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(58, 49, 44, 0.02);
+        .reviews-slider-wrapper {
+            overflow: hidden;
+            width: 100%;
         }
-        .review-header {
+        .reviews-slides {
             display: flex;
-            justify-content: space-between;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+        }
+        .review-slide-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 0 15px;
+        }
+        .review-meta {
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            margin-bottom: 10px;
+            gap: 4px;
+            margin-bottom: 12px;
         }
         .review-author {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--brand-dark);
         }
         .review-stars {
             color: #ffb400;
             font-size: 0.85rem;
+            letter-spacing: 2px;
         }
         .review-date {
-            font-size: 0.72rem;
+            font-size: 0.7rem;
             color: var(--text-muted);
-            margin-bottom: 10px;
-            font-weight: 300;
+            font-weight: 400;
         }
-        .review-text {
-            font-size: 0.82rem;
+        .review-content-text {
+            font-size: 0.85rem;
             line-height: 1.6;
-            color: #333333;
+            color: #2c2c2c;
             font-style: italic;
             margin: 0;
+        }
+        
+        /* Flèches des Avis */
+        .rev-arrow {
+            position: absolute;
+            top: 55%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 18px;
+            color: var(--accent-color);
+            cursor: pointer;
+            padding: 5px;
+            z-index: 5;
+            transition: color 0.2s;
+        }
+        .rev-arrow:hover { color: var(--brand-dark); }
+        .rev-prev { left: 4px; }
+        .rev-next { right: 4px; }
+
+        /* Points (Dots) de Navigation */
+        .reviews-dots {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 15px;
+        }
+        .rev-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(181, 131, 106, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .rev-dot.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+            width: 14px;
+            border-radius: 4px;
+        }
+
+        /* Spécificité pour le bloc avis hôte de la page principale */
+        .main-host-reviews {
+            max-width: 430px;
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            margin-bottom: 25px;
         }
 
         /* Calendriers */
@@ -369,6 +431,45 @@
                 <div class="property-cta">Découvrir et Réserver <span>→</span></div>
             </div>
         </div>
+
+        <div class="reviews-carousel-container main-host-reviews">
+            <h4>★ Avis Hôte</h4>
+            <button class="rev-arrow rev-prev" onclick="moveReview('host', -1)">❮</button>
+            <button class="rev-arrow rev-next" onclick="moveReview('host', 1)">❯</button>
+            <div class="reviews-slider-wrapper">
+                <div class="reviews-slides" id="slides-reviews-host">
+                    <div class="review-slide-item">
+                        <div class="review-meta">
+                            <span class="review-author">François</span>
+                            <span class="review-stars">★★★★★</span>
+                            <span class="review-date">Octobre 2025</span>
+                        </div>
+                        <p class="review-content-text">"Accueil et séjour très chaleureux. L'hôte est aux petits soins et d'une réactivité exemplaire. Une expérience parfaite de A à Z."</p>
+                    </div>
+                    <div class="review-slide-item">
+                        <div class="review-meta">
+                            <span class="review-author">Sondra</span>
+                            <span class="review-stars">★★★★★</span>
+                            <span class="review-date">Avril 2026</span>
+                        </div>
+                        <p class="review-content-text">"Nous avons passé un excellent moment grâce aux précieux conseils de notre hôte sur les plus belles plages secrètes de la région !"</p>
+                    </div>
+                    <div class="review-slide-item">
+                        <div class="review-meta">
+                            <span class="review-author">Sébastien</span>
+                            <span class="review-stars">★★★★★</span>
+                            <span class="review-date">Mars 2026</span>
+                        </div>
+                        <p class="review-content-text">"Hôte très organisé et attentionné. La communication a été fluide avant et pendant le séjour. Je recommande vivement !"</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reviews-dots" id="dots-reviews-host">
+                <div class="rev-dot active" onclick="jumpToReview('host', 0)"></div>
+                <div class="rev-dot" onclick="jumpToReview('host', 1)"></div>
+                <div class="rev-dot" onclick="jumpToReview('host', 2)"></div>
+            </div>
+        </div>
     </div>
 
     <div class="footer-links">
@@ -405,25 +506,33 @@
                 Niché sur les hauteurs de Porto-Vecchio, ce duplex de très grand standing offre une immersion exclusive face à la mer. Entièrement pensé avec des matériaux nobles, il combine design contemporain et confort absolu pour une parenthèse inoubliable à deux.
             </p>
 
-            <div class="reviews-section">
-                <h4>★ Avis Voyageurs</h4>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-author">Michel</span>
-                        <span class="review-stars">★★★★★</span>
+            <div class="reviews-carousel-container">
+                <h4>★ Avis Logement</h4>
+                <button class="rev-arrow rev-prev" onclick="moveReview('porto', -1)">❮</button>
+                <button class="rev-arrow rev-next" onclick="moveReview('porto', 1)">❯</button>
+                <div class="reviews-slider-wrapper">
+                    <div class="reviews-slides" id="slides-reviews-porto">
+                        <div class="review-slide-item">
+                            <div class="review-meta">
+                                <span class="review-author">Michel</span>
+                                <span class="review-stars">★★★★★</span>
+                                <span class="review-date">Il y a 2 jours</span>
+                            </div>
+                            <p class="review-content-text">"La maison est superbe et idéalement située. La vue sur le golfe est tout simplement incroyable au réveil. Propreté impeccable."</p>
+                        </div>
+                        <div class="review-slide-item">
+                            <div class="review-meta">
+                                <span class="review-author">Julien</span>
+                                <span class="review-stars">★★★★★</span>
+                                <span class="review-date">Avril 2026</span>
+                            </div>
+                            <p class="review-content-text">"Séjour très reposant, agréable. Le duplex est spacieux, parfaitement équipé et l'accueil a été formidable. Nous reviendrons sans hésiter."</p>
+                        </div>
                     </div>
-                    <div class="review-date">Il y a 2 jours</div>
-                    <p class="review-text">"La maison est superbe et idéalement située. La vue sur le golfe est tout simplement incroyable au réveil. Propreté impeccable."</p>
                 </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-author">Julien</span>
-                        <span class="review-stars">★★★★★</span>
-                    </div>
-                    <div class="review-date">Avril 2026</div>
-                    <p class="review-text">"Séjour très reposant, agréable. Le duplex est spacieux, parfaitement équipé et l'accueil a été formidable. Nous reviendrons sans hésiter."</p>
+                <div class="reviews-dots" id="dots-reviews-porto">
+                    <div class="rev-dot active" onclick="jumpToReview('porto', 0)"></div>
+                    <div class="rev-dot" onclick="jumpToReview('porto', 1)"></div>
                 </div>
             </div>
 
@@ -479,25 +588,33 @@
                 Une bergerie authentique en pierres de Corse nichée au cœur du maquis odorant.
             </p>
 
-            <div class="reviews-section">
-                <h4>★ Avis Voyageurs</h4>
-                
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-author">Blandine</span>
-                        <span class="review-stars">★★★★★</span>
+            <div class="reviews-carousel-container">
+                <h4>★ Avis Logement</h4>
+                <button class="rev-arrow rev-prev" onclick="moveReview('sotta', -1)">❮</button>
+                <button class="rev-arrow rev-next" onclick="moveReview('sotta', 1)">❯</button>
+                <div class="reviews-slider-wrapper">
+                    <div class="reviews-slides" id="slides-reviews-sotta">
+                        <div class="review-slide-item">
+                            <div class="review-meta">
+                                <span class="review-author">Blandine</span>
+                                <span class="review-stars">★★★★★</span>
+                                <span class="review-date">Mai 2026</span>
+                            </div>
+                            <p class="review-content-text">"Bergerie hyper agréable, très bien décorée avec beaucoup de goût. Le jardin et la piscine au milieu du maquis sont magiques."</p>
+                        </div>
+                        <div class="review-slide-item">
+                            <div class="review-meta">
+                                <span class="review-author">Etienne</span>
+                                <span class="review-stars">★★★★★</span>
+                                <span class="review-date">Mai 2026</span>
+                            </div>
+                            <p class="review-content-text">"Nous avons passé un très agréable séjour. Calme absolu, aucun vis-à-vis, et des hôtes d'une grande gentillesse."</p>
+                        </div>
                     </div>
-                    <div class="review-date">Mai 2026</div>
-                    <p class="review-text">"Bergerie hyper agréable, très bien décorée avec beaucoup de goût. Le jardin et la piscine au milieu du maquis sont magiques."</p>
                 </div>
-
-                <div class="review-card">
-                    <div class="review-header">
-                        <span class="review-author">Etienne</span>
-                        <span class="review-stars">★★★★★</span>
-                    </div>
-                    <div class="review-date">Mai 2026</div>
-                    <p class="review-text">"Nous avons passé un très agréable séjour. Calme absolu, aucun vis-à-vis, et des hôtes d'une grande gentillesse."</p>
+                <div class="reviews-dots" id="dots-reviews-sotta">
+                    <div class="rev-dot active" onclick="jumpToReview('sotta', 0)"></div>
+                    <div class="rev-dot" onclick="jumpToReview('sotta', 1)"></div>
                 </div>
             </div>
 
@@ -540,16 +657,50 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 3. NAVIGATION GALERIES PHOTOS
+    // 3. NAVIGATION GALERIES PHOTOS LOGEMENTS
     const galleryIndices = { porto: 0, sotta: 0 };
     function moveGallery(property, direction) {
         const slider = document.getElementById(`slides-${property}`);
         const totalImages = slider.querySelectorAll('img').length;
-        galleryIndices[property] = (galleryIndices[property] * totalImages + direction + totalImages) % totalImages;
+        galleryIndices[property] = (galleryIndices[property] + direction + totalImages) % totalImages;
         slider.style.transform = `translateX(${-galleryIndices[property] * 100}%)`;
     }
 
-    // 4. SELECTION DES DATES
+    // 4. MOTEUR DE NAVIGATION POUR LES CARROUSELS D'AVIS (Flèches et Points)
+    const reviewIndices = { host: 0, porto: 0, sotta: 0 };
+
+    function updateReviewCarousel(carouselId) {
+        const slider = document.getElementById(`slides-reviews-${carouselId}`);
+        const dotsContainer = document.getElementById(`dots-reviews-${carouselId}`);
+        const index = reviewIndices[carouselId];
+        
+        // Fait défiler le conteneur
+        slider.style.transform = `translateX(${-index * 100}%)`;
+        
+        // Met à jour l'état visuel des petits points (dots)
+        const dots = dotsContainer.querySelectorAll('.rev-dot');
+        dots.forEach((dot, idx) => {
+            if(idx === index) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function moveReview(carouselId, direction) {
+        const slider = document.getElementById(`slides-reviews-${carouselId}`);
+        const totalReviews = slider.querySelectorAll('.review-slide-item').length;
+        reviewIndices[carouselId] = (reviewIndices[carouselId] + direction + totalReviews) % totalReviews;
+        updateReviewCarousel(carouselId);
+    }
+
+    function jumpToReview(carouselId, index) {
+        reviewIndices[carouselId] = index;
+        updateReviewCarousel(carouselId);
+    }
+
+    // 5. SELECTION DES DATES DES CALENDRIERS
     const bookingDates = { porto: { start: null, end: null }, sotta: { start: null, end: null } };
 
     function initCalendar(propertyId) {
@@ -598,7 +749,7 @@
         });
     }
 
-    // 5. SYNCHRONISATION AIRBNB iCAL
+    // 6. SYNCHRONISATION AIRBNB iCAL
     async function synchroniserAvecAirbnb(propertyId, icalUrl) {
         if (!icalUrl || icalUrl.includes("URL_DE_TON_LIEN_ICAL_AIRBNB_ICI")) {
             initCalendar(propertyId);
