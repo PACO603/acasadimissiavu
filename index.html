@@ -11,6 +11,7 @@
             --text-muted: #5a5a5a;
             --accent-color: #b5836a; 
             --brand-dark: #3a312c;
+            --bg-light: #fffaf7;
         }
 
         body {
@@ -33,7 +34,6 @@
             width: 100%; 
             max-width: 430px; 
             text-align: center; 
-            /* Animation d'apparition douce au chargement du site */
             animation: fadeInPage 1.2s ease-out;
         }
 
@@ -42,7 +42,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* En-tête Écrin de verre */
+        /* En-tête */
         .header-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(14px);
@@ -89,7 +89,6 @@
             margin: 0 auto;
         }
 
-        /* Boîte de Description */
         .description-box { 
             margin-bottom: 35px; 
             font-size: 0.9rem; 
@@ -105,13 +104,14 @@
             box-shadow: 0 12px 30px rgba(58, 49, 44, 0.06);
         }
 
-        /* Cartes Propriétés */
+        /* Cartes Propriétés (Boutons d'ouverture) */
         .property-card {
             background: #ffffff; 
             border-radius: 24px; 
             overflow: hidden;
             margin-bottom: 30px;
             display: block;
+            cursor: pointer;
             text-decoration: none;
             color: inherit;
             border: 1px solid rgba(181, 131, 106, 0.12); 
@@ -131,58 +131,17 @@
             position: relative;
         }
 
-        .property-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(58, 49, 44, 0);
-            transition: background-color 0.4s ease;
-        }
-        .property-card:hover .property-image-wrapper::after {
-            background: rgba(58, 49, 44, 0.04);
-        }
-
         .property-card img { 
             width: 100%; 
             height: 100%; 
             object-fit: cover;
-            transition: transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .property-card:hover img {
-            transform: scale(1.03);
-        }
-
-        .property-details { 
-            padding: 25px; 
-            text-align: left; 
-        }
+        .property-details { padding: 25px; text-align: left; }
+        .property-location { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent-color); font-weight: 700; margin-bottom: 8px; }
+        .property-title { font-weight: 600; font-size: 1.15rem; margin-bottom: 8px; letter-spacing: 0.5px; color: var(--brand-dark); }
+        .property-desc { font-size: 0.82rem; color: var(--text-muted); font-weight: 400; line-height: 1.6; margin-bottom: 18px; }
         
-        .property-location {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            color: var(--accent-color); 
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .property-title { 
-            font-weight: 600; 
-            font-size: 1.15rem; 
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-            color: var(--brand-dark);
-        }
-        
-        .property-desc { 
-            font-size: 0.82rem; 
-            color: var(--text-muted);
-            font-weight: 400;
-            line-height: 1.6;
-            margin-bottom: 18px;
-        }
-
         .property-cta {
             display: inline-flex;
             align-items: center;
@@ -193,139 +152,129 @@
             font-weight: 600;
             border-bottom: 1px solid rgba(181, 131, 106, 0.4);
             padding-bottom: 4px;
-            transition: color 0.3s ease, border-color 0.3s ease;
-        }
-
-        .property-cta span {
-            display: inline-block;
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            margin-left: 5px;
-        }
-
-        .property-card:hover .property-cta {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-
-        .property-card:hover .property-cta span {
-            transform: translateX(4px);
         }
 
         /* Section Témoignages */
         .reviews-section {
-            margin-top: 35px;
-            padding: 40px 25px;
-            background: #a38a7b; 
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(58, 49, 44, 0.18);
+            margin-top: 35px; width: 100%; box-sizing: border-box; padding: 40px 25px; background: #a38a7b; border-radius: 24px; box-shadow: 0 15px 35px rgba(58, 49, 44, 0.18);
         }
+        .reviews-section h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 28px; font-weight: 600; color: #ffffff; margin-top: 0; }
+        .slider-container { position: relative; padding: 0 20px; }
+        .slide { font-size: 0.88rem; line-height: 1.75; font-style: italic; color: #ffffff; min-height: 75px; }
+        .slide strong { display: block; margin-top: 15px; font-style: normal; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #fdf0e6; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #ffffff; opacity: 0.6; padding: 10px; }
+        .prev-btn { left: -15px; } .next-btn { right: -15px; }
+        .dots-container { margin-top: 25px; }
+        .dot { height: 5px; width: 5px; background-color: rgba(255, 255, 255, 0.35); border-radius: 50%; display: inline-block; margin: 0 6px; }
+        .dot.active { background-color: #ffffff; transform: scale(1.3); }
 
-        .reviews-section h3 {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 2.5px;
-            margin-bottom: 28px;
-            font-weight: 600;
-            color: #ffffff;
-            margin-top: 0;
-            opacity: 0.95;
-        }
+        .footer-links { margin-top: 60px; display: flex; justify-content: center; gap: 15px; width: 100%; }
+        .footer-link { font-size: 0.75rem; text-decoration: none; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; padding: 12px 26px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.5); }
 
-        .slider-container {
-            position: relative;
-            padding: 0 20px;
-        }
-
-        .slide {
-            font-size: 0.88rem;
-            line-height: 1.75;
-            font-style: italic;
-            color: #ffffff;
-            min-height: 75px;
-        }
-
-        .slide strong {
-            display: block;
-            margin-top: 15px;
-            font-style: normal;
-            font-size: 0.75rem;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #fdf0e6; 
-        }
-
-        .nav-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 16px;
-            color: #ffffff;
-            opacity: 0.6;
-            transition: opacity 0.2s, transform 0.2s;
-            padding: 10px;
-        }
-        .nav-btn:hover { 
-            opacity: 1;
-            transform: translateY(-50%) scale(1.1);
-        }
-        .prev-btn { left: -15px; }
-        .next-btn { right: -15px; }
-
-        .dots-container {
-            margin-top: 25px;
-        }
-
-        .dot {
-            height: 5px;
-            width: 5px;
-            background-color: rgba(255, 255, 255, 0.35);
-            border-radius: 50%;
-            display: inline-block;
-            margin: 0 6px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-        
-        .dot.active {
-            background-color: #ffffff;
-            transform: scale(1.3);
-        }
-
-        /* Pied de page */
-        .footer-links {
-            margin-top: 60px;
-            display: flex;
+        /* =========================================
+           STYLE DES NOUVELLES PAGES (MODALES)
+        ============================================ */
+        .page-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(40, 33, 29, 0.5);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            z-index: 9999;
+            display: none; /* Caché par défaut */
             justify-content: center;
-            gap: 15px;
-            width: 100%;
+            align-items: flex-start;
+            overflow-y: auto;
+            padding: 20px 0;
         }
 
-        .footer-link {
-            font-size: 0.75rem;
-            text-decoration: none;
+        .page-content {
+            background: var(--bg-light);
+            width: 92%;
+            max-width: 480px;
+            border-radius: 28px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.7);
+            margin-bottom: 40px;
+            animation: openPage 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes openPage {
+            from { transform: scale(0.95); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px; right: 15px;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 18px;
+            font-weight: bold;
             color: var(--brand-dark);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-            padding: 12px 26px;
-            background: rgba(255, 255, 255, 0.8); 
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 6px 15px rgba(58, 49, 44, 0.04);
+            cursor: pointer;
+            z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        .footer-link:hover { 
-            color: #ffffff;
-            background: var(--brand-dark);
-            border-color: var(--brand-dark);
-            box-shadow: 0 10px 22px rgba(58, 49, 44, 0.15);
-            transform: translateY(-2px);
+        /* Galerie Photos */
+        .page-gallery { width: 100%; height: 260px; position: relative; }
+        .page-gallery img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .page-body { padding: 25px; text-align: left; }
+        .page-title { font-size: 1.4rem; font-weight: 700; color: var(--brand-dark); margin: 0 0 5px 0; }
+        .page-location { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-weight: 600; margin-bottom: 20px; }
+        
+        /* Caractéristiques (Badges) */
+        .features-grid {
+            display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px;
         }
+        .feature-badge {
+            background: #ffffff;
+            border: 1px solid rgba(181, 131, 106, 0.2);
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--brand-dark);
+        }
+
+        .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 30px; }
+
+        /* Planning de Réservation Style Luxe */
+        .calendar-section { margin-bottom: 30px; }
+        .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 15px; }
+        
+        .calendar-grid {
+            display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
+            background: #ffffff; padding: 15px; border-radius: 18px;
+            border: 1px solid rgba(181, 131, 106, 0.15);
+        }
+        .cal-day-name { font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--accent-color); padding-bottom: 5px; }
+        .cal-day { font-size: 0.78rem; text-align: center; padding: 8px 0; border-radius: 8px; font-weight: 500; background: #fafafa; color: #ccc; }
+        .cal-day.available { background: #f4ebe6; color: var(--brand-dark); font-weight: 600; }
+        .cal-day.booked { background: #f5f5f5; color: #b0b0b0; text-decoration: line-through; font-weight: 300; }
+
+        /* Légende Calendrier */
+        .calendar-legend { display: flex; gap: 15px; margin-top: 10px; font-size: 0.72rem; padding-left: 5px; }
+        .legend-item { display: flex; align-items: center; gap: 5px; }
+        .legend-color { width: 10px; height: 10px; border-radius: 3px; }
+
+        /* Bouton de réservation */
+        .book-btn {
+            display: block; width: 100%; padding: 15px;
+            background: var(--brand-dark); color: #ffffff;
+            border: none; border-radius: 16px; font-weight: 600;
+            font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; text-align: center; text-decoration: none;
+            transition: background 0.2s;
+        }
+        .book-btn:hover { background: var(--accent-color); }
     </style>
 </head>
 <body>
@@ -344,7 +293,7 @@
         Des intérieurs soignés et des emplacements uniques entre mer et maquis pour vivre l'expérience corse absolue.
     </div>
 
-    <a href="#" class="property-card">
+    <div class="property-card" onclick="openPage('modal-porto')">
         <div class="property-image-wrapper">
             <img src="photo-porto-vecchio.jpg" alt="L'Échappée Porto-Vecchio">
         </div>
@@ -352,11 +301,11 @@
             <div class="property-location">Porto-Vecchio</div>
             <div class="property-title">L'Échappée</div>
             <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
-            <div class="property-cta">Découvrir la demeure <span>→</span></div>
+            <div class="property-cta">Découvrir et Réserver</div>
         </div>
-    </a>
+    </div>
 
-    <a href="#" class="property-card">
+    <div class="property-card" onclick="openPage('modal-sotta')">
         <div class="property-image-wrapper">
             <img src="sotta.jpg" alt="Demeure Sotta">
         </div>
@@ -364,33 +313,28 @@
             <div class="property-location">Sotta</div>
             <div class="property-title">Demeure Sotta</div>
             <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
-            <div class="property-cta">Découvrir la demeure <span>→</span></div>
+            <div class="property-cta">Découvrir et Réserver</div>
         </div>
-    </a>
+    </div>
 
     <div class="reviews-section">
         <h3>L'expérience de nos hôtes</h3>
-        
         <div class="slider-container">
             <div class="slide" style="display: block;">
                 <p>"Un séjour hors du temps. La demeure à Sotta est un véritable havre de paix où chaque détail est pensé avec goût."</p>
                 <strong>— Marie D.</strong>
             </div>
-            
             <div class="slide" style="display: none;">
                 <p>"La vue depuis l'appartement de Porto-Vecchio est tout simplement magique au réveil. Accueil remarquable."</p>
                 <strong>— Jean-Marc P.</strong>
             </div>
-            
             <div class="slide" style="display: none;">
                 <p>"Propreté irréprochable, design épuré et conseils précieux pour découvrir la région. Nous reviendrons sans hésiter."</p>
                 <strong>— Sophie L.</strong>
             </div>
-
-            <button class="nav-btn prev-btn" onclick="changeSlide(-1)">❮</button>
-            <button class="nav-btn next-btn" onclick="changeSlide(1)">❯</button>
+            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); changeSlide(-1)">❮</button>
+            <button class="nav-btn next-btn" onclick="event.stopPropagation(); changeSlide(1)">❯</button>
         </div>
-
         <div class="dots-container">
             <span class="dot active"></span>
             <span class="dot"></span>
@@ -405,7 +349,94 @@
 
 </div>
 
+<div id="modal-porto" class="page-overlay" onclick="closePage('modal-porto')">
+    <div class="page-content" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closePage('modal-porto')">✕</button>
+        <div class="page-gallery">
+            <img src="photo-porto-vecchio.jpg" alt="L'Échappée">
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">L'Échappée</h2>
+            <div class="page-location">Porto-Vecchio, Corse du Sud</div>
+            
+            <div class="features-grid">
+                <div class="feature-badge">📐 55 m²</div>
+                <div class="feature-badge">🛏️ 1 Chambre</div>
+                <div class="feature-badge">🚿 1 Salle de bain</div>
+                <div class="feature-badge">🌊 Vue Mer</div>
+                <div class="feature-badge">📶 Wi-Fi</div>
+            </div>
+
+            <p class="page-text">
+                Niché sur les hauteurs de Porto-Vecchio, ce duplex de très grand standing offre une immersion exclusive face à la mer. Entièrement pensé avec des matériaux nobles, il combine design contemporain et confort absolu pour une parenthèse inoubliable à deux.
+            </p>
+
+            <div class="calendar-section">
+                <h4>Disponibilités • Mai 2026</h4>
+                <div class="calendar-grid">
+                    <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
+                    <div class="cal-day booked">1</div><div class="cal-day booked">2</div><div class="cal-day booked">3</div>
+                    <div class="cal-day available">4</div><div class="cal-day available">5</div><div class="cal-day available">6</div><div class="cal-day booked">7</div><div class="cal-day booked">8</div><div class="cal-day booked">9</div><div class="cal-day booked">10</div>
+                    <div class="cal-day available">11</div><div class="cal-day available">12</div><div class="cal-day available">13</div><div class="cal-day available">14</div><div class="cal-day available">15</div><div class="cal-day booked">16</div><div class="cal-day booked">17</div>
+                    <div class="cal-day available">18</div><div class="cal-day available">19</div><div class="cal-day available">20</div><div class="cal-day available">21</div><div class="cal-day available">22</div><div class="cal-day available">23</div><div class="cal-day available">24</div>
+                    <div class="cal-day available">25</div><div class="cal-day available">26</div><div class="cal-day booked">27</div><div class="cal-day booked">28</div><div class="cal-day booked">29</div><div class="cal-day available">30</div><div class="cal-day available">31</div>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
+                    <div class="legend-item"><div class="legend-color" style="background:#f5f5f5; border:1px solid #ddd;"></div>Réservé</div>
+                </div>
+            </div>
+
+            <a href="mailto:contact@exemple.com?subject=Demande de réservation - L'Echappée" class="book-btn">Demander à réserver</a>
+        </div>
+    </div>
+</div>
+
+<div id="modal-sotta" class="page-overlay" onclick="closePage('modal-sotta')">
+    <div class="page-content" onclick="event.stopPropagation()">
+        <button class="close-btn" onclick="closePage('modal-sotta')">✕</button>
+        <div class="page-gallery">
+            <img src="sotta.jpg" alt="Demeure Sotta">
+        </div>
+        <div class="page-body">
+            <h2 class="page-title">Demeure Sotta</h2>
+            <div class="page-location">Sotta, Région de Figari</div>
+            
+            <div class="features-grid">
+                <div class="feature-badge">📐 110 m²</div>
+                <div class="feature-badge">🛏️ 2 Chambres</div>
+                <div class="feature-badge">🚿 2 Salles de bain</div>
+                <div class="feature-badge">🏊 Piscine Privée</div>
+                <div class="feature-badge">🌿 Calme Maquis</div>
+            </div>
+
+            <p class="page-text">
+                Une bergerie authentique en pierres de Corse nichée au cœur du maquis odorant. Offrant une intimité totale, cette demeure d'exception dispose de sa piscine privée chauffée et de prestations haut de gamme, à seulement quelques minutes des plages sauvages et de l'aéroport.
+            </p>
+
+            <div class="calendar-section">
+                <h4>Disponibilités • Mai 2026</h4>
+                <div class="calendar-grid">
+                    <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
+                    <div class="cal-day available">1</div><div class="cal-day available">2</div><div class="cal-day available">3</div>
+                    <div class="cal-day booked">4</div><div class="cal-day booked">5</div><div class="cal-day booked">6</div><div class="cal-day booked">7</div><div class="cal-day booked">8</div><div class="cal-day booked">9</div><div class="cal-day booked">10</div>
+                    <div class="cal-day available">11</div><div class="cal-day available">12</div><div class="cal-day available">13</div><div class="cal-day available">14</div><div class="cal-day available">15</div><div class="cal-day available">16</div><div class="cal-day available">17</div>
+                    <div class="cal-day booked">18</div><div class="cal-day booked">19</div><div class="cal-day booked">20</div><div class="cal-day booked">21</div><div class="cal-day booked">22</div><div class="cal-day booked">23</div><div class="cal-day booked">24</div>
+                    <div class="cal-day available">25</div><div class="cal-day available">26</div><div class="cal-day available">27</div><div class="cal-day available">28</div><div class="cal-day available">29</div><div class="cal-day available">30</div><div class="cal-day available">31</div>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
+                    <div class="legend-item"><div class="legend-color" style="background:#f5f5f5; border:1px solid #ddd;"></div>Réservé</div>
+                </div>
+            </div>
+
+            <a href="mailto:contact@exemple.com?subject=Demande de réservation - Demeure Sotta" class="book-btn">Demander à réserver</a>
+        </div>
+    </div>
+</div>
+
 <script>
+    // Logique du slider d'avis
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -413,11 +444,20 @@
     function changeSlide(direction) {
         slides[currentSlide].style.display = 'none';
         dots[currentSlide].classList.remove('active');
-
         currentSlide = (currentSlide + direction + slides.length) % slides.length;
-
         slides[currentSlide].style.display = 'block';
         dots[currentSlide].classList.add('active');
+    }
+
+    // NOUVELLE FONCTIONNALITÉ : Gestion de l'ouverture et fermeture des pages de biens
+    function openPage(id) {
+        document.getElementById(id).style.display = 'flex';
+        document.body.style.overflow = 'hidden'; // Bloque le défilement du fond
+    }
+
+    function closePage(id) {
+        document.getElementById(id).style.display = 'none';
+        document.body.style.overflow = 'auto'; // Réactive le défilement
     }
 </script>
 
