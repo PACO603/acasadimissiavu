@@ -162,10 +162,10 @@
         .property-card:hover .property-cta { color: var(--accent-color); border-color: var(--accent-color); }
         .property-card:hover .property-cta span { transform: translateX(4px); }
 
-        /* NOUVEAU : Zone d'intégration Trustindex Élargie et Autonome */
+        /* Zone d'intégration Trustindex Élargie */
         .trustindex-fluid-container {
             width: 100%;
-            max-width: 800px; /* Donne beaucoup plus d'espace pour que le widget respire */
+            max-width: 800px; 
             margin: 40px auto;
             padding: 0 20px;
             box-sizing: border-box;
@@ -327,9 +327,10 @@
         </div>
     </div>
 
-    <div class="<script defer async src='https://cdn.trustindex.io/loader.js?9076bc572207229d0816f88c8d4'></script>">
+    <div class="trustindex-fluid-container">
+        <script defer async src="https://cdn.trustindex.io/loader.js?9076bc572207229d0816f88c8d4"></script>
+    </div>
 
-        </div>
     <div class="footer-links">
         <a href="#" class="footer-link">Instagram</a>
         <a href="mailto:contact@exemple.com" class="footer-link">Contact</a>
