@@ -14,11 +14,13 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            background: linear-gradient(rgba(181, 131, 106, 0.15), rgba(30, 25, 20, 0.25)), 
-                        url('image_13d838.jpg'); /* Ton image d'oliviers */
+            /* CORRECTION ICI : L'image s'affiche parfaitement et reste nette */
+            background-image: linear-gradient(rgba(181, 131, 106, 0.15), rgba(30, 25, 20, 0.25)), 
+                              url('image_13d838.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
+            background-repeat: no-repeat;
             color: var(--text-color);
             margin: 0;
             display: flex;
@@ -245,7 +247,7 @@
 
         .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
 
-        /* Structure Globale du Carrousel d'Avis (Main & Modales) */
+        /* Structure Globale du Carrousel d'Avis */
         .reviews-carousel-container {
             margin: 30px 0;
             position: relative;
@@ -622,7 +624,7 @@
                 <h4>Disponibilités • Mai 2026</h4>
                 <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
                 <div class="calendar-grid" id="cal-sotta">
-                    <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
+                    <div class="calendar-grid-name cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
                     <div class="cal-day available" data-day="1">1</div><div class="cal-day available" data-day="2">2</div><div class="cal-day available" data-day="3">3</div>
                     <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day available" data-day="7">7</div><div class="cal-day available" data-day="8">8</div><div class="cal-day available" data-day="9">9</div><div class="cal-day available" data-day="10">10</div>
                     <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day available" data-day="16">16</div><div class="cal-day available" data-day="17">17</div>
