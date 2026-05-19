@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Casa Di Missiavu - Collection Corse</title>
-    <link href="olivier-fond2.jpg">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --text-color: #1a1a1a;
@@ -373,6 +373,7 @@
             gap: 25px;
             max-height: 380px;
             overflow-y: auto;
+            scroll-behavior: smooth;
             padding-right: 5px;
             border: 1px solid rgba(181, 131, 106, 0.1);
             border-radius: 20px;
@@ -380,15 +381,53 @@
             background: rgba(255, 255, 255, 0.5);
         }
 
-        .month-block { margin-bottom: 5px; }
+        .month-block { margin-bottom: 5px; scroll-margin-top: 10px; }
+        
+        /* En-tête du mois alignant titre et flèches de switch */
+        .month-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-left: 5px;
+            border-left: 3px solid var(--accent-color);
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+            z-index: 2;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
         .month-title {
             font-size: 0.82rem;
             font-weight: 600;
             color: var(--brand-dark);
             text-transform: capitalize;
-            margin-bottom: 10px;
-            padding-left: 5px;
-            border-left: 3px solid var(--accent-color);
+        }
+
+        /* Container des deux flèches de switch */
+        .month-switcher {
+            display: flex;
+            gap: 12px;
+            padding-right: 5px;
+        }
+
+        .switch-btn {
+            background: none;
+            border: none;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            cursor: pointer;
+            font-weight: bold;
+            padding: 2px 6px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .switch-btn:hover {
+            background: rgba(181, 131, 106, 0.1);
+            color: var(--brand-dark);
         }
 
         .calendar-grid {
@@ -665,7 +704,6 @@
     const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
     const AIRBNB_ICAL_URL_SOTTA = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
 
-    // Noms des mois pour l'affichage des titres de calendriers
     const MONTH_NAMES = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 
     // 2. GESTION DES MODALES
@@ -716,16 +754,23 @@
         updateReviewCarousel(carouselId);
     }
 
-    // 5. SELECTION ET GENERATION DES CALENDRIERS (12 MOIS GLISSANTS DEPUIS MAI 2026)
-    const bookingDates = { 
-        porto: { start: null, end: null }, 
-        sotta: { start: null, end: null } 
-    };
+    // 5. SELECTION ET GENERATION DES CALENDRIERS
+    const bookingDates = { porto: { start: null, end: null }, sotta: { start: null, end: null } };
 
-    // Génère les 12 mois dans l'interface HTML
+    // Fonction de switch entre les mois (Défilement fluide vers le bloc d'index ciblé)
+    function switchMonth(propertyId, targetIndex) {
+        if (targetIndex < 0 || targetIndex >= 12) return;
+        const container = document.getElementById(`cal-container-${propertyId}`);
+        const blocks = container.querySelectorAll('.month-block');
+        if (blocks[targetIndex]) {
+            blocks[targetIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    }
+
+    // Génère les 12 mois dans l'interface HTML avec les boutons switch de dos
     function generate12MonthsCalendarHTML(propertyId) {
         const container = document.getElementById(`cal-container-${propertyId}`);
-        container.innerHTML = ''; // Nettoyer
+        container.innerHTML = ''; 
 
         let startYear = 2026;
         let startMonth = 4; // Mai (base 0)
@@ -737,16 +782,43 @@
             const monthBlock = document.createElement('div');
             monthBlock.className = 'month-block';
 
+            // Création du header flexible (titre + flèches)
+            const header = document.createElement('div');
+            header.className = 'month-header';
+
             const title = document.createElement('div');
             title.className = 'month-title';
             title.innerText = `${MONTH_NAMES[currentMonth]} ${currentYear}`;
-            monthBlock.appendChild(title);
+            header.appendChild(title);
 
+            // Container pour les deux flèches dos à dos ❮ et ❯
+            const switcher = document.createElement('div');
+            switcher.className = 'month-switcher';
+
+            const prevBtn = document.createElement('button');
+            prevBtn.className = 'switch-btn';
+            prevBtn.innerText = m === 0 ? ' ' : '❮'; // Vide si c'est le tout premier mois
+            if (m > 0) {
+                prevBtn.onclick = () => switchMonth(propertyId, m - 1);
+            }
+            
+            const nextBtn = document.createElement('button');
+            nextBtn.className = 'switch-btn';
+            nextBtn.innerText = m === 11 ? ' ' : '❯'; // Vide si c'est le tout dernier mois
+            if (m < 11) {
+                nextBtn.onclick = () => switchMonth(propertyId, m + 1);
+            }
+
+            switcher.appendChild(prevBtn);
+            switcher.appendChild(nextBtn);
+            header.appendChild(switcher);
+            monthBlock.appendChild(header);
+
+            // Grille de calendrier
             const grid = document.createElement('div');
             grid.className = 'calendar-grid';
             grid.id = `cal-grid-${propertyId}-${currentYear}-${currentMonth}`;
 
-            // En-tête des jours
             const daysInitials = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
             daysInitials.forEach(initial => {
                 const dayName = document.createElement('div');
@@ -755,19 +827,15 @@
                 grid.appendChild(dayName);
             });
 
-            // Calcul du décalage (premier jour du mois)
             let firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
-            // Convertir de Dim=0..Sam=6 à Lun=0..Dim=6
             firstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
 
-            // Cases vides
             for (let i = 0; i < firstDayIndex; i++) {
                 const emptyDay = document.createElement('div');
                 emptyDay.className = 'cal-day empty';
                 grid.appendChild(emptyDay);
             }
 
-            // Nombre de jours dans le mois
             let totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
             for (let d = 1; d <= totalDays; d++) {
                 const dayCell = document.createElement('div');
@@ -782,7 +850,6 @@
         }
     }
 
-    // Gère l'événement clic et la sélection de plage de dates sur 1 an
     function initCalendarLogic(propertyId) {
         const container = document.getElementById(`cal-container-${propertyId}`);
         const bookBtn = document.getElementById(`btn-book-${propertyId}`);
@@ -800,7 +867,6 @@
                 } else if (clickedDate < data.start) {
                     data.start = clickedDate;
                 } else {
-                    // Vérifier s'il y a un jour réservé au milieu de la plage sélectionnée
                     let hasBlock = false;
                     let cursor = new Date(data.start);
                     while (cursor <= clickedDate) {
@@ -819,7 +885,6 @@
                     }
                 }
 
-                // Rafraîchir l'affichage graphique de toutes les cases
                 days.forEach(d => {
                     const dTime = new Date(d.getAttribute('data-date'));
                     d.classList.remove('selected', 'in-range');
@@ -829,7 +894,6 @@
                     if (data.start && data.end && dTime > data.start && dTime < data.end) d.classList.add('in-range');
                 });
 
-                // Mettre à jour le lien du bouton de réservation par email
                 if (data.start) {
                     let formattedStart = `${String(data.start.getDate()).padStart(2, '0')}/${String(data.start.getMonth()+1).padStart(2, '0')}/${data.start.getFullYear()}`;
                     let mailText = `du ${formattedStart}`;
@@ -882,7 +946,6 @@
                 }
             });
 
-            // Appliquer le style booked sur les éléments iCal trouvés
             const container = document.getElementById(`cal-container-${propertyId}`);
             datesReserveesStrings.forEach(dateStr => {
                 let cell = container.querySelector(`[data-date="${dateStr}"]`);
