@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
+<!DOCTYPE html><html lang="fr"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Casa Di Missiavu - Collection Corse</title>
@@ -17,7 +15,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(rgba(181, 131, 106, 0.12), rgba(30, 25, 20, 0.22)), 
-                        url('olivier-fond2.jpg');
+                        url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -104,7 +102,7 @@
             box-shadow: 0 12px 30px rgba(58, 49, 44, 0.06);
         }
 
-        /* Cartes Propriétés (Boutons d'ouverture) */
+        /* Cartes Propriétés (Nouveaux effets au survol) */
         .property-card {
             background: #ffffff; 
             border-radius: 24px; 
@@ -116,11 +114,11 @@
             color: inherit;
             border: 1px solid rgba(181, 131, 106, 0.12); 
             box-shadow: 0 15px 40px rgba(58, 49, 44, 0.1);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
         }
 
         .property-card:hover { 
-            transform: translateY(-6px); 
+            transform: scale(1.02) translateY(-4px); 
             box-shadow: 0 25px 50px rgba(58, 49, 44, 0.18);
         }
 
@@ -135,6 +133,11 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .property-card:hover img {
+            transform: scale(1.03);
         }
 
         .property-details { padding: 25px; text-align: left; }
@@ -150,8 +153,25 @@
             letter-spacing: 2px;
             color: var(--brand-dark);
             font-weight: 600;
-            border-bottom: 1px solid rgba(181, 131, 106, 0.4);
+            border-bottom: 1px solid rgba(181, 131, 106, 0.2);
             padding-bottom: 4px;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .property-cta span {
+            display: inline-block;
+            margin-left: 6px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Effet de couleur et flèche au survol de la carte globale */
+        .property-card:hover .property-cta {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+        
+        .property-card:hover .property-cta span {
+            transform: translateX(4px);
         }
 
         /* Section Témoignages */
@@ -162,7 +182,7 @@
         .slider-container { position: relative; padding: 0 20px; }
         .slide { font-size: 0.88rem; line-height: 1.75; font-style: italic; color: #ffffff; min-height: 75px; }
         .slide strong { display: block; margin-top: 15px; font-style: normal; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #fdf0e6; }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #ffffff; opacity: 0.6; padding: 10px; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #ffffff; opacity: 0.6; padding: 10px; z-index: 5; }
         .prev-btn { left: -15px; } .next-btn { right: -15px; }
         .dots-container { margin-top: 25px; }
         .dot { height: 5px; width: 5px; background-color: rgba(255, 255, 255, 0.35); border-radius: 50%; display: inline-block; margin: 0 6px; }
@@ -172,7 +192,7 @@
         .footer-link { font-size: 0.75rem; text-decoration: none; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; padding: 12px 26px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.5); }
 
         /* =========================================
-           STYLE DES NOUVELLES PAGES (MODALES)
+           STYLE DES MODALES
         ============================================ */
         .page-overlay {
             position: fixed;
@@ -181,7 +201,7 @@
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             z-index: 9999;
-            display: none; /* Caché par défaut */
+            display: none; 
             justify-content: center;
             align-items: flex-start;
             overflow-y: auto;
@@ -222,10 +242,21 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Galerie Photos */
-        .page-gallery { width: 100%; height: 260px; position: relative; }
-        .page-gallery img { width: 100%; height: 100%; object-fit: cover; }
+        /* Galerie Photos Slider dans les modales */
+        .page-gallery { width: 100%; height: 280px; position: relative; overflow: hidden; }
+        .modal-slides { width: 100%; height: 100%; display: flex; transition: transform 0.4s ease-in-out; }
+        .modal-slides img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
         
+        .gallery-btn {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(4px);
+            border: none; width: 32px; height: 32px; border-radius: 50%;
+            cursor: pointer; font-size: 14px; color: var(--brand-dark);
+            display: flex; align-items: center; justify-content: center; z-index: 5;
+        }
+        .gallery-prev { left: 15px; }
+        .gallery-next { right: 15px; }
+
         .page-body { padding: 25px; text-align: left; }
         .page-title { font-size: 1.4rem; font-weight: 700; color: var(--brand-dark); margin: 0 0 5px 0; }
         .page-location { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-weight: 600; margin-bottom: 20px; }
@@ -246,9 +277,10 @@
 
         .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 30px; }
 
-        /* Planning de Réservation Style Luxe */
+        /* Planning de Réservation Interactif */
         .calendar-section { margin-bottom: 30px; }
-        .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 15px; }
+        .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 5px; }
+        .calendar-subtitle { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 15px; }
         
         .calendar-grid {
             display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
@@ -256,9 +288,16 @@
             border: 1px solid rgba(181, 131, 106, 0.15);
         }
         .cal-day-name { font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--accent-color); padding-bottom: 5px; }
+        
+        /* États des jours du calendrier */
         .cal-day { font-size: 0.78rem; text-align: center; padding: 8px 0; border-radius: 8px; font-weight: 500; background: #fafafa; color: #ccc; }
-        .cal-day.available { background: #f4ebe6; color: var(--brand-dark); font-weight: 600; }
-        .cal-day.booked { background: #f5f5f5; color: #b0b0b0; text-decoration: line-through; font-weight: 300; }
+        .cal-day.available { background: #f4ebe6; color: var(--brand-dark); font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .cal-day.available:hover { background: var(--accent-color); color: white; }
+        .cal-day.booked { background: #f5f5f5; color: #b0b0b0; text-decoration: line-through; font-weight: 300; cursor: not-allowed; }
+        
+        /* Sélection dynamique */
+        .cal-day.selected { background: var(--accent-color) !important; color: #ffffff !important; }
+        .cal-day.in-range { background: rgba(181, 131, 106, 0.25) !important; color: var(--brand-dark) !important; border-radius: 0; }
 
         /* Légende Calendrier */
         .calendar-legend { display: flex; gap: 15px; margin-top: 10px; font-size: 0.72rem; padding-left: 5px; }
@@ -267,7 +306,7 @@
 
         /* Bouton de réservation */
         .book-btn {
-            display: block; width: 100%; padding: 15px;
+            display: block; width: 100%; padding: 15px; box-sizing: border-box;
             background: var(--brand-dark); color: #ffffff;
             border: none; border-radius: 16px; font-weight: 600;
             font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px;
@@ -275,11 +314,7 @@
             transition: background 0.2s;
         }
         .book-btn:hover { background: var(--accent-color); }
-    </style>
-</head>
-<body>
-
-<div class="container">
+    </style></head><body><div class="container">
     
     <div class="header-card">
         <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
@@ -301,7 +336,7 @@
             <div class="property-location">Porto-Vecchio</div>
             <div class="property-title">L'Échappée</div>
             <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
-            <div class="property-cta">Découvrir et Réserver</div>
+            <div class="property-cta">Découvrir et Réserver <span>→</span></div>
         </div>
     </div>
 
@@ -313,7 +348,7 @@
             <div class="property-location">Sotta</div>
             <div class="property-title">Demeure Sotta</div>
             <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
-            <div class="property-cta">Découvrir et Réserver</div>
+            <div class="property-cta">Découvrir et Réserver <span>→</span></div>
         </div>
     </div>
 
@@ -345,16 +380,22 @@
     <div class="footer-links">
         <a href="#" class="footer-link">Instagram</a>
         <a href="mailto:contact@exemple.com" class="footer-link">Contact</a>
-    </div>
-
-</div>
+    </div></div>
 
 <div id="modal-porto" class="page-overlay" onclick="closePage('modal-porto')">
     <div class="page-content" onclick="event.stopPropagation()">
         <button class="close-btn" onclick="closePage('modal-porto')">✕</button>
+        
         <div class="page-gallery">
-            <img src="photo-porto-vecchio.jpg" alt="L'Échappée">
+            <div class="modal-slides" id="slides-porto">
+                <img src="photo-porto-vecchio.jpg" alt="L'Échappée vue 1">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Intérieur">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Terrasse">
+            </div>
+            <button class="gallery-btn gallery-prev" onclick="moveGallery('porto', -1)">❮</button>
+            <button class="gallery-btn gallery-next" onclick="moveGallery('porto', 1)">❯</button>
         </div>
+
         <div class="page-body">
             <h2 class="page-title">L'Échappée</h2>
             <div class="page-location">Porto-Vecchio, Corse du Sud</div>
@@ -373,21 +414,23 @@
 
             <div class="calendar-section">
                 <h4>Disponibilités • Mai 2026</h4>
-                <div class="calendar-grid">
+                <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
+                <div class="calendar-grid" id="cal-porto">
                     <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
-                    <div class="cal-day booked">1</div><div class="cal-day booked">2</div><div class="cal-day booked">3</div>
-                    <div class="cal-day available">4</div><div class="cal-day available">5</div><div class="cal-day available">6</div><div class="cal-day booked">7</div><div class="cal-day booked">8</div><div class="cal-day booked">9</div><div class="cal-day booked">10</div>
-                    <div class="cal-day available">11</div><div class="cal-day available">12</div><div class="cal-day available">13</div><div class="cal-day available">14</div><div class="cal-day available">15</div><div class="cal-day booked">16</div><div class="cal-day booked">17</div>
-                    <div class="cal-day available">18</div><div class="cal-day available">19</div><div class="cal-day available">20</div><div class="cal-day available">21</div><div class="cal-day available">22</div><div class="cal-day available">23</div><div class="cal-day available">24</div>
-                    <div class="cal-day available">25</div><div class="cal-day available">26</div><div class="cal-day booked">27</div><div class="cal-day booked">28</div><div class="cal-day booked">29</div><div class="cal-day available">30</div><div class="cal-day available">31</div>
+                    <div class="cal-day booked" data-day="1">1</div><div class="cal-day booked" data-day="2">2</div><div class="cal-day booked" data-day="3">3</div>
+                    <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day booked" data-day="7">7</div><div class="cal-day booked" data-day="8">8</div><div class="cal-day booked" data-day="9">9</div><div class="cal-day booked" data-day="10">10</div>
+                    <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day booked" data-day="16">16</div><div class="cal-day booked" data-day="17">17</div>
+                    <div class="cal-day available" data-day="18">18</div><div class="cal-day available" data-day="19">19</div><div class="cal-day available" data-day="20">20</div><div class="cal-day available" data-day="21">21</div><div class="cal-day available" data-day="22">22</div><div class="cal-day available" data-day="23">23</div><div class="cal-day available" data-day="24">24</div>
+                    <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day booked" data-day="27">27</div><div class="cal-day booked" data-day="28">28</div><div class="cal-day booked" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
                 </div>
                 <div class="calendar-legend">
                     <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
+                    <div class="legend-item"><div class="legend-color" style="background:var(--accent-color);"></div>Votre sélection</div>
                     <div class="legend-item"><div class="legend-color" style="background:#f5f5f5; border:1px solid #ddd;"></div>Réservé</div>
                 </div>
             </div>
 
-            <a href="mailto:contact@exemple.com?subject=Demande de réservation - L'Echappée" class="book-btn">Demander à réserver</a>
+            <a href="mailto:contact@exemple.com?subject=Demande de réservation - L'Echappée" class="book-btn" id="btn-book-porto">Demander à réserver</a>
         </div>
     </div>
 </div>
@@ -395,9 +438,17 @@
 <div id="modal-sotta" class="page-overlay" onclick="closePage('modal-sotta')">
     <div class="page-content" onclick="event.stopPropagation()">
         <button class="close-btn" onclick="closePage('modal-sotta')">✕</button>
+        
         <div class="page-gallery">
-            <img src="sotta.jpg" alt="Demeure Sotta">
+            <div class="modal-slides" id="slides-sotta">
+                <img src="sotta.jpg" alt="Demeure Sotta vue 1">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80" alt="Piscine">
+                <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80" alt="Salon">
+            </div>
+            <button class="gallery-btn gallery-prev" onclick="moveGallery('sotta', -1)">❮</button>
+            <button class="gallery-btn gallery-next" onclick="moveGallery('sotta', 1)">❯</button>
         </div>
+
         <div class="page-body">
             <h2 class="page-title">Demeure Sotta</h2>
             <div class="page-location">Sotta, Région de Figari</div>
@@ -416,27 +467,29 @@
 
             <div class="calendar-section">
                 <h4>Disponibilités • Mai 2026</h4>
-                <div class="calendar-grid">
+                <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
+                <div class="calendar-grid" id="cal-sotta">
                     <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
-                    <div class="cal-day available">1</div><div class="cal-day available">2</div><div class="cal-day available">3</div>
-                    <div class="cal-day booked">4</div><div class="cal-day booked">5</div><div class="cal-day booked">6</div><div class="cal-day booked">7</div><div class="cal-day booked">8</div><div class="cal-day booked">9</div><div class="cal-day booked">10</div>
-                    <div class="cal-day available">11</div><div class="cal-day available">12</div><div class="cal-day available">13</div><div class="cal-day available">14</div><div class="cal-day available">15</div><div class="cal-day available">16</div><div class="cal-day available">17</div>
-                    <div class="cal-day booked">18</div><div class="cal-day booked">19</div><div class="cal-day booked">20</div><div class="cal-day booked">21</div><div class="cal-day booked">22</div><div class="cal-day booked">23</div><div class="cal-day booked">24</div>
-                    <div class="cal-day available">25</div><div class="cal-day available">26</div><div class="cal-day available">27</div><div class="cal-day available">28</div><div class="cal-day available">29</div><div class="cal-day available">30</div><div class="cal-day available">31</div>
+                    <div class="cal-day available" data-day="1">1</div><div class="cal-day available" data-day="2">2</div><div class="cal-day available" data-day="3">3</div>
+                    <div class="cal-day booked" data-day="4">4</div><div class="cal-day booked" data-day="5">5</div><div class="cal-day booked" data-day="6">6</div><div class="cal-day booked" data-day="7">7</div><div class="cal-day booked" data-day="8">8</div><div class="cal-day booked" data-day="9">9</div><div class="cal-day booked" data-day="10">10</div>
+                    <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day available" data-day="16">16</div><div class="cal-day available" data-day="17">17</div>
+                    <div class="cal-day booked" data-day="18">18</div><div class="cal-day booked" data-day="19">19</div><div class="cal-day booked" data-day="20">20</div><div class="cal-day booked" data-day="21">21</div><div class="cal-day booked" data-day="22">22</div><div class="cal-day booked" data-day="23">23</div><div class="cal-day booked" data-day="24">24</div>
+                    <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day available" data-day="27">27</div><div class="cal-day available" data-day="28">28</div><div class="cal-day available" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
                 </div>
                 <div class="calendar-legend">
                     <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
+                    <div class="legend-item"><div class="legend-color" style="background:var(--accent-color);"></div>Votre sélection</div>
                     <div class="legend-item"><div class="legend-color" style="background:#f5f5f5; border:1px solid #ddd;"></div>Réservé</div>
                 </div>
             </div>
 
-            <a href="mailto:contact@exemple.com?subject=Demande de réservation - Demeure Sotta" class="book-btn">Demander à réserver</a>
+            <a href="mailto:contact@exemple.com?subject=Demande de réservation - Demeure Sotta" class="book-btn" id="btn-book-sotta">Demander à réserver</a>
         </div>
     </div>
 </div>
 
 <script>
-    // Logique du slider d'avis
+    // 1. LOGIQUE DU SLIDER D'AVIS (PRINCIPAL)
     let currentSlide = 0;
     const slides = document.querySelectorAll('.slide');
     const dots = document.querySelectorAll('.dot');
@@ -449,17 +502,94 @@
         dots[currentSlide].classList.add('active');
     }
 
-    // NOUVELLE FONCTIONNALITÉ : Gestion de l'ouverture et fermeture des pages de biens
+    // 2. OUVERTURE / FERMETURE DES MODALES
     function openPage(id) {
         document.getElementById(id).style.display = 'flex';
-        document.body.style.overflow = 'hidden'; // Bloque le défilement du fond
+        document.body.style.overflow = 'hidden';
     }
 
     function closePage(id) {
         document.getElementById(id).style.display = 'none';
-        document.body.style.overflow = 'auto'; // Réactive le défilement
+        document.body.style.overflow = 'auto';
     }
-</script>
 
-</body>
-</html>
+    // 3. LOGIQUE DES SLIDERS PHOTOS DANS LES MODALES
+    const galleryIndices = { porto: 0, sotta: 0 };
+
+    function moveGallery(property, direction) {
+        const slider = document.getElementById(`slides-${property}`);
+        const totalImages = slider.querySelectorAll('img').length;
+        
+        galleryIndices[property] = (galleryIndices[property] + direction + totalImages) % totalImages;
+        const transformValue = -(galleryIndices[property] * 100);
+        slider.style.transform = `translateX(${transformValue}%)`;
+    }
+
+    // 4. LOGIQUE DES CALENDRIERS INTERACTIFS (Sélection de plages de dates)
+    const bookingDates = {
+        porto: { start: null, end: null },
+        sotta: { start: null, end: null }
+    };
+
+    function initCalendar(propertyId) {
+        const container = document.getElementById(`cal-${propertyId}`);
+        const days = container.querySelectorAll('.cal-day.available');
+        const bookBtn = document.getElementById(`btn-book-${propertyId}`);
+        const initialSubject = bookBtn.getAttribute('href');
+
+        days.forEach(day => {
+            day.addEventListener('click', () => {
+                const dayNum = parseInt(day.getAttribute('data-day'));
+                let data = bookingDates[propertyId];
+
+                // Logique de sélection : premier clic = début, second clic = fin
+                if (!data.start || (data.start && data.end)) {
+                    data.start = dayNum;
+                    data.end = null;
+                } else if (dayNum < data.start) {
+                    data.start = dayNum;
+                } else {
+                    // Vérifier s'il y a un jour réservé (booked) entre le début et la fin choisie
+                    let hasBlock = false;
+                    for (let i = data.start; i <= dayNum; i++) {
+                        if (container.querySelector(`[data-day="${i}"].booked`)) {
+                            hasBlock = true;
+                        }
+                    }
+                    if (!hasBlock) {
+                        data.end = dayNum;
+                    } else {
+                        // Si un jour bloqué fait obstacle, on recommence la sélection au jour cliqué
+                        data.start = dayNum;
+                    }
+                }
+
+                // Rafraîchir l'affichage visuel des classes CSS
+                const allDays = container.querySelectorAll('.cal-day');
+                allDays.forEach(d => {
+                    const dNum = parseInt(d.getAttribute('data-day'));
+                    d.classList.remove('selected', 'in-range');
+                    
+                    if (data.start && dNum === data.start) d.classList.add('selected');
+                    if (data.end && dNum === data.end) d.classList.add('selected');
+                    if (data.start && data.end && dNum > data.start && dNum < data.end) {
+                        d.classList.add('in-range');
+                    }
+                });
+
+                // Mettre à jour dynamiquement l'objet de l'e-mail avec les dates choisies
+                if (data.start) {
+                    let dateStr = `du ${data.start} Mai 2026`;
+                    if (data.end) dateStr += ` au ${data.end} Mai 2026`;
+                    
+                    const propertyName = propertyId === 'porto' ? "L'Echappée" : "Demeure Sotta";
+                    bookBtn.setAttribute('href', `mailto:contact@exemple.com?subject=Demande de réservation - ${propertyName} (${dateStr})`);
+                }
+            });
+        });
+    }
+
+    // Initialisation des calendriers au chargement du script
+    initCalendar('porto');
+    initCalendar('sotta');
+</script></body></html>
