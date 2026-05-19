@@ -14,9 +14,9 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Arrière-plan : Image d'un olivier chaleureux avec un léger voile pour adoucir */
-            background: linear-gradient(rgba(251, 247, 244, 0.4), rgba(243, 234, 227, 0.4)), 
-                        url('olivier-fond2.jpg');
+            /* CORRECTIF : Voile blanc réduit au minimum, teinté très légèrement pour donner de la chaleur sans blanchir l'olivier */
+            background: linear-gradient(rgba(181, 131, 106, 0.15), rgba(40, 30, 20, 0.25)), 
+                        url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -29,7 +29,7 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Retour à la largeur d'origine compacte et verticale */
+        /* Largeur verticale d'origine préservée */
         .container { 
             width: 100%; 
             max-width: 420px; 
@@ -43,7 +43,7 @@
             border-radius: 50%; 
             margin-bottom: 20px; 
             object-fit: cover;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
         h1 { 
@@ -53,13 +53,15 @@
             text-transform: uppercase; 
             font-weight: 600;
             color: #1a1a1a;
+            /* Léger ombrage pour détacher le titre du fond si l'image bouge */
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.5);
         }
 
         .subtitle {
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 3px;
-            color: #555;
+            color: #333;
             margin-bottom: 25px;
             font-weight: 500;
         }
@@ -67,7 +69,7 @@
         .divider {
             width: 50px;
             height: 1px;
-            background-color: rgba(0,0,0,0.2);
+            background-color: rgba(0,0,0,0.25);
             margin: 0 auto 25px auto;
         }
 
@@ -77,17 +79,17 @@
             line-height: 1.7; 
             color: #1a1a1a; 
             font-weight: 500;
-            padding: 15px 20px;
-            /* Effet verre dépoli pour se détacher magnifiquement de la photo d'olivier */
-            background: rgba(255, 255, 255, 0.75); 
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            padding: 18px 22px;
+            /* Légèrement plus opaque pour contrer la baisse du filtre de fond et rester lisible */
+            background: rgba(255, 255, 255, 0.82); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
-        /* Cartes Propriétés (Présentation 100% verticale d'origine) */
+        /* Cartes Propriétés (Verticales) */
         .property-card {
             background: #fffaf7; 
             border-radius: 24px; 
@@ -96,14 +98,14 @@
             display: block;
             text-decoration: none;
             color: inherit;
-            border: 1px solid rgba(181, 131, 106, 0.2); 
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(181, 131, 106, 0.25); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .property-card:hover { 
             transform: translateY(-5px); 
-            box-shadow: 0 20px 45px rgba(139, 92, 70, 0.18);
+            box-shadow: 0 20px 45px rgba(139, 92, 70, 0.22);
         }
 
         .property-image-wrapper {
@@ -158,7 +160,7 @@
             padding: 30px 20px;
             background: #a38a7b; 
             border-radius: 24px;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .reviews-section h3 {
@@ -194,7 +196,7 @@
             color: #fdf0e6; 
         }
 
-        /* Flèches pour changer d'avis */
+        /* Flèches fonctionnelles */
         .nav-btn {
             position: absolute;
             top: 50%;
@@ -223,7 +225,7 @@
             border-radius: 50%;
             display: inline-block;
             margin: 0 5px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: background-color 0.3s;
         }
         
         .dot.active {
@@ -231,7 +233,7 @@
             transform: scale(1.2);
         }
 
-        /* Pied de page protégé par un fond flouté chic */
+        /* Pied de page */
         .footer-links {
             margin-top: 50px;
             display: flex;
@@ -249,17 +251,18 @@
             font-weight: 600;
             transition: all 0.2s;
             padding: 10px 20px;
-            background: rgba(255, 255, 255, 0.65); 
+            background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(5px);
             -webkit-backdrop-filter: blur(5px);
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
         .footer-link:hover { 
             color: #ffffff;
             background: var(--accent-color);
+            border-color: var(--accent-color);
         }
     </style>
 </head>
