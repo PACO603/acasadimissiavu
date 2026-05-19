@@ -9,13 +9,16 @@
         :root {
             --text-color: #1a1a1a;
             --text-muted: #4a4a4a;
-            --accent-color: #b5836a; /* Touche terracotta */
+            --accent-color: #b5836a; /* Terracotta */
         }
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* Fond dégradé doux effet sable/crème, chaleureux et moderne */
-            background: linear-gradient(135deg, #fbf7f4 0%, #f3eae3 50%, #eade|d5 100%);
+            /* Arrière-plan : Image d'un olivier chaleureux avec un léger voile pour adoucir */
+            background: linear-gradient(rgba(251, 247, 244, 0.4), rgba(243, 234, 227, 0.4)), 
+                        url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
             background-attachment: fixed;
             color: var(--text-color);
             margin: 0;
@@ -24,53 +27,23 @@
             align-items: center;
             padding: 50px 20px;
             -webkit-font-smoothing: antialiased;
-            position: relative;
-            overflow-x: hidden;
         }
 
-        /* Formes de lumière en arrière-plan pour habiller le vide sans alourdir */
-        .bg-blur-1 {
-            position: fixed;
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: rgba(181, 131, 106, 0.08); /* Rappel terracotta très diffus */
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .bg-blur-2 {
-            position: fixed;
-            bottom: 10%;
-            right: -10%;
-            width: 60vw;
-            height: 60vw;
-            background: rgba(163, 138, 123, 0.1); /* Rappel taupe du logo */
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            pointer-events: none;
-        }
-
+        /* Retour à la largeur d'origine compacte et verticale */
         .container { 
             width: 100%; 
             max-width: 420px; 
             text-align: center; 
-            position: relative;
-            z-index: 1;
         }
 
-        /* En-tête haut de gamme */
+        /* En-tête */
         .logo { 
             width: 90px; 
             height: 90px;
             border-radius: 50%; 
             margin-bottom: 20px; 
             object-fit: cover;
-            box-shadow: 0 8px 25px rgba(163, 138, 123, 0.2);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
         }
         
         h1 { 
@@ -94,7 +67,7 @@
         .divider {
             width: 50px;
             height: 1px;
-            background-color: rgba(0,0,0,0.15);
+            background-color: rgba(0,0,0,0.2);
             margin: 0 auto 25px auto;
         }
 
@@ -104,33 +77,33 @@
             line-height: 1.7; 
             color: #1a1a1a; 
             font-weight: 500;
-            padding: 20px;
-            /* Verre dépoli blanc pur pour ressortir sur le fond crème */
+            padding: 15px 20px;
+            /* Effet verre dépoli pour se détacher magnifiquement de la photo d'olivier */
             background: rgba(255, 255, 255, 0.75); 
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 10px 30px rgba(163, 138, 123, 0.08);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
         }
 
-        /* Cartes Propriétés */
+        /* Cartes Propriétés (Présentation 100% verticale d'origine) */
         .property-card {
-            background: #ffffff; 
+            background: #fffaf7; 
             border-radius: 24px; 
             overflow: hidden;
             margin-bottom: 30px;
             display: block;
             text-decoration: none;
             color: inherit;
-            border: 1px solid rgba(181, 131, 106, 0.12); 
-            box-shadow: 0 12px 35px rgba(163, 138, 123, 0.08);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+            border: 1px solid rgba(181, 131, 106, 0.2); 
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .property-card:hover { 
-            transform: translateY(-6px); 
-            box-shadow: 0 20px 40px rgba(139, 92, 70, 0.15);
+            transform: translateY(-5px); 
+            box-shadow: 0 20px 45px rgba(139, 92, 70, 0.18);
         }
 
         .property-image-wrapper {
@@ -143,15 +116,15 @@
             width: 100%; 
             height: 100%; 
             object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.6s ease;
         }
 
         .property-card:hover img {
-            transform: scale(1.03);
+            transform: scale(1.04);
         }
 
         .property-details { 
-            padding: 24px; 
+            padding: 22px; 
             text-align: left; 
         }
         
@@ -166,7 +139,7 @@
 
         .property-title { 
             font-weight: 600; 
-            font-size: 1.15rem; 
+            font-size: 1.1rem; 
             margin-bottom: 6px;
             letter-spacing: 0.5px;
             color: #1a1a1a;
@@ -182,10 +155,10 @@
         /* Section Témoignages */
         .reviews-section {
             margin-top: 40px;
-            padding: 35px 20px;
-            background: #a38a7b; /* Couleur corporate du logo */
+            padding: 30px 20px;
+            background: #a38a7b; 
             border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(163, 138, 123, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
         }
 
         .reviews-section h3 {
@@ -221,6 +194,7 @@
             color: #fdf0e6; 
         }
 
+        /* Flèches pour changer d'avis */
         .nav-btn {
             position: absolute;
             top: 50%;
@@ -257,9 +231,9 @@
             transform: scale(1.2);
         }
 
-        /* Pied de page épuré et parfaitement lisible */
+        /* Pied de page protégé par un fond flouté chic */
         .footer-links {
-            margin-top: 60px;
+            margin-top: 50px;
             display: flex;
             justify-content: center;
             gap: 15px;
@@ -269,30 +243,27 @@
         .footer-link {
             font-size: 0.75rem;
             text-decoration: none;
-            color: #4a4a4a;
+            color: #1a1a1a;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-weight: 600;
-            transition: all 0.3s ease;
-            padding: 10px 24px;
-            background: rgba(255, 255, 255, 0.6);
+            transition: all 0.2s;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border-radius: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 4px 15px rgba(163, 138, 123, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
         }
 
         .footer-link:hover { 
             color: #ffffff;
             background: var(--accent-color);
-            border-color: var(--accent-color);
-            box-shadow: 0 8px 20px rgba(181, 131, 106, 0.2);
         }
     </style>
 </head>
 <body>
-
-<div class="bg-blur-1"></div>
-<div class="bg-blur-2"></div>
 
 <div class="container">
     <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
