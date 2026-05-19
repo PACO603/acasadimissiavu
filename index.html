@@ -487,6 +487,90 @@
         </div>
     </div>
 </div>
+        // URL de ton calendrier Airbnb (remplace avec ton vrai lien exporté)
+const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
+
+// Fonction pour récupérer et analyser le calendrier Airbnb
+async function synchroniserAvecAirbnb(propertyId, icalUrl) {
+    if (icalUrl === "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI") return; // Ne fait rien si le lien n'est pas configuré
+
+    try {
+        // Utilisation d'un proxy gratuit pour éviter les blocages de sécurité (CORS)
+        const proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent(icalUrl);
+        const response = await fetch(proxyUrl);
+        const data = await response.text();
+
+        // Analyse rudimentaire du fichier iCal pour trouver les dates de début (DTSTART) et fin (DTEND)
+        const lignes = data.split('\n');
+        let datesReservees = [];
+        let debutTemp = null;
+
+        lignes.forEach(ligne => {
+            if (ligne.startsWith('DTSTART')) {
+                // Extrait la date au format AAAAMMJJ
+                const dateStr = ligne.split(':')[1].substring(0, 8);
+                debutTemp = parseICalDate(dateStr);
+            }
+            if (ligne.startsWith('DTEND') && debutTemp) {
+                const dateStr = ligne.split(':')[1].substring(0, 8);
+                const finTemp = parseICalDate(dateStr);
+                
+                // On ajoute toutes les dates comprises entre le début et la fin du séjour
+                let courante = new Date(debutTemp);
+                while (courante < finTemp) {
+                    // On ne garde que les réservations de Mai 2026 pour ton calendrier actuel
+                    if (courante.getFullYear() === 2026 && courante.getMonth() === 4) { // 4 = Mai en JS
+                        datesReservees.push(courante.getDate());
+                    }
+                    courante.setDate(courante.getDate() + 1);
+                }
+                debutTemp = null;
+            }
+        });
+
+        // Appliquer les changements sur le calendrier HTML
+        mettreAJourCalendrierHTML(propertyId, datesReservees);
+
+    } catch (erreur) {
+        console.error("Erreur lors de la synchronisation Airbnb pour " + propertyId + ":", erreur);
+    }
+}
+
+// Fonction utilitaire pour transformer "20260515" en objet Date JavaScript
+function parseICalDate(dateStr) {
+    const annee = parseInt(dateStr.substring(0, 4));
+    const mois = parseInt(dateStr.substring(4, 6)) - 1;
+    const jour = parseInt(dateStr.substring(6, 8));
+    return new Date(annee, mois, jour);
+}
+
+// Fonction qui modifie les classes de ton calendrier HTML
+function mettreAJourCalendrierHTML(propertyId, joursOccupes) {
+    const container = document.getElementById(`cal-${propertyId}`);
+    const allDays = container.querySelectorAll('.cal-day');
+
+    allDays.forEach(day => {
+        const dayNum = parseInt(day.getAttribute('data-day'));
+        if (!isNaN(dayNum)) {
+            if (joursOccupes.includes(dayNum)) {
+                // Le jour est réservé sur Airbnb -> On le bloque
+                day.className = "cal-day booked";
+            } else {
+                // Le jour est libre -> On le rend disponible et cliquable
+                day.className = "cal-day available";
+            }
+        }
+    });
+
+    // Ré-initialiser la logique de clic sur les nouveaux jours disponibles
+    initCalendar(propertyId);
+}
+
+// Lancement automatique de la synchronisation au chargement de la page
+window.addEventListener('DOMContentLoaded', () => {
+    synchroniserAvecAirbnb('porto', AIRBNB_ICAL_URL_PORTO);
+    // Tu pourras faire de même pour Sotta : synchroniserAvecAirbnb('sotta', AIRBNB_ICAL_URL_SOTTA);
+});
 
 <script>
     // 1. LOGIQUE DU SLIDER D'AVIS (PRINCIPAL)
