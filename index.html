@@ -102,7 +102,7 @@
             box-shadow: 0 12px 30px rgba(58, 49, 44, 0.06);
         }
 
-        /* Cartes Propriétés avec effets de survol */
+        /* Cartes Propriétés */
         .property-card {
             background: #ffffff; 
             border-radius: 24px; 
@@ -158,33 +158,23 @@
             transition: color 0.3s ease, border-color 0.3s ease;
         }
 
-        .property-cta span {
-            display: inline-block;
-            margin-left: 6px;
-            transition: transform 0.3s ease;
-        }
+        .property-cta span { display: inline-block; margin-left: 6px; transition: transform 0.3s ease; }
+        .property-card:hover .property-cta { color: var(--accent-color); border-color: var(--accent-color); }
+        .property-card:hover .property-cta span { transform: translateX(4px); }
 
-        .property-card:hover .property-cta {
-            color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-        
-        .property-card:hover .property-cta span {
-            transform: translateX(4px);
-        }
-
-        /* Zone d'intégration Trustindex globale */
-        .trustindex-global-wrapper {
-            margin-top: 15px;
-            margin-bottom: 35px;
+        /* NOUVEAU : Zone d'intégration Trustindex Élargie et Autonome */
+        .trustindex-fluid-container {
             width: 100%;
+            max-width: 800px; /* Donne beaucoup plus d'espace pour que le widget respire */
+            margin: 40px auto;
+            padding: 0 20px;
             box-sizing: border-box;
         }
 
-        .footer-links { margin-top: 40px; display: flex; justify-content: center; gap: 15px; width: 100%; }
+        .footer-links { margin-top: 20px; display: flex; justify-content: center; gap: 15px; width: 100%; max-width: 430px; }
         .footer-link { font-size: 0.75rem; text-decoration: none; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; padding: 12px 26px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.5); }
 
-        /* Style des Modales */
+        /* Modales */
         .page-overlay {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -233,7 +223,6 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
 
-        /* Galerie Photos Multiples */
         .page-gallery { width: 100%; height: 280px; position: relative; overflow: hidden; }
         .modal-slides { width: 100%; height: 100%; display: flex; transition: transform 0.4s ease-in-out; }
         .modal-slides img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
@@ -252,7 +241,6 @@
         .page-title { font-size: 1.4rem; font-weight: 700; color: var(--brand-dark); margin: 0 0 5px 0; }
         .page-location { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-color); font-weight: 600; margin-bottom: 20px; }
         
-        /* Badges caractéristiques */
         .features-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 25px; }
         .feature-badge {
             background: #ffffff;
@@ -266,7 +254,7 @@
 
         .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
 
-        /* Calendriers Optis */
+        /* Calendriers */
         .calendar-section { margin-bottom: 30px; margin-top: 25px; }
         .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 5px; }
         .calendar-subtitle { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 15px; }
@@ -299,51 +287,53 @@
             transition: background 0.2s;
         }
         .book-btn:hover { background: var(--accent-color); }
-    </style></head><body><div class="container">
-    
-    <div class="header-card">
-        <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
-        <h1>A Casa Di Missiavu</h1>
-        <div class="subtitle">Collection Privée • Corse</div>
-        <div class="divider"></div>
-    </div>
+    </style></head><body>
 
-    <div class="description-box">
-        Bienvenue dans notre sélection confidentielle de demeures de charme. 
-        Des intérieurs soignés et des emplacements uniques entre mer et maquis pour vivre l'expérience corse absolue.
-    </div>
+    <div class="container">
+        <div class="header-card">
+            <img src="photo-logo.jpg" alt="Logo A Casa Di Missiavu" class="logo">
+            <h1>A Casa Di Missiavu</h1>
+            <div class="subtitle">Collection Privée • Corse</div>
+            <div class="divider"></div>
+        </div>
 
-    <div class="property-card" onclick="openPage('modal-porto')">
-        <div class="property-image-wrapper">
-            <img src="photo-porto-vecchio.jpg" alt="L'Échappée Porto-Vecchio">
+        <div class="description-box">
+            Bienvenue dans notre sélection confidentielle de demeures de charme. 
+            Des intérieurs soignés et des emplacements uniques entre mer et maquis pour vivre l'expérience corse absolue.
         </div>
-        <div class="property-details">
-            <div class="property-location">Porto-Vecchio</div>
-            <div class="property-title">L'Échappée</div>
-            <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
-            <div class="property-cta">Découvrir et Réserver <span>→</span></div>
-        </div>
-    </div>
 
-    <div class="property-card" onclick="openPage('modal-sotta')">
-        <div class="property-image-wrapper">
-            <img src="sotta.jpg" alt="Demeure Sotta">
+        <div class="property-card" onclick="openPage('modal-porto')">
+            <div class="property-image-wrapper">
+                <img src="photo-porto-vecchio.jpg" alt="L'Échappée Porto-Vecchio">
+            </div>
+            <div class="property-details">
+                <div class="property-location">Porto-Vecchio</div>
+                <div class="property-title">L'Échappée</div>
+                <div class="property-desc">Duplex de standing · 1 chambre · Vue mer panoramique</div>
+                <div class="property-cta">Découvrir et Réserver <span>→</span></div>
+            </div>
         </div>
-        <div class="property-details">
-            <div class="property-location">Sotta</div>
-            <div class="property-title">Demeure Sotta</div>
-            <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
-            <div class="property-cta">Découvrir et Réserver <span>→</span></div>
+
+        <div class="property-card" onclick="openPage('modal-sotta')">
+            <div class="property-image-wrapper">
+                <img src="sotta.jpg" alt="Demeure Sotta">
+            </div>
+            <div class="property-details">
+                <div class="property-location">Sotta</div>
+                <div class="property-title">Demeure Sotta</div>
+                <div class="property-desc">Bergerie en pierre · 2 chambres · Piscine privée & maquis</div>
+                <div class="property-cta">Découvrir et Réserver <span>→</span></div>
+            </div>
         </div>
     </div>
 
     <div class="<script defer async src='https://cdn.trustindex.io/loader.js?9076bc572207229d0816f88c8d4'></script>">
-        
+
         </div>
     <div class="footer-links">
         <a href="#" class="footer-link">Instagram</a>
         <a href="mailto:contact@exemple.com" class="footer-link">Contact</a>
-    </div></div>
+    </div>
 
 <div id="modal-porto" class="page-overlay" onclick="closePage('modal-porto')">
     <div class="page-content" onclick="event.stopPropagation()">
@@ -450,7 +440,7 @@
 </div>
 
 <script>
-    // 1. LIENS AIRBNB ICAL (Insère tes flux de réservation ici)
+    // 1. LIENS AIRBNB ICAL
     const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
     const AIRBNB_ICAL_URL_SOTTA = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
 
@@ -465,7 +455,7 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 3. NAVIGATION GALERIES PHOTOS MODALES
+    // 3. NAVIGATION GALERIES PHOTOS
     const galleryIndices = { porto: 0, sotta: 0 };
     function moveGallery(property, direction) {
         const slider = document.getElementById(`slides-${property}`);
@@ -474,7 +464,7 @@
         slider.style.transform = `translateX(${-galleryIndices[property] * 100}%)`;
     }
 
-    // 4. SELECTION DES DATES (Calendrier Interactif)
+    // 4. SELECTION DES DATES
     const bookingDates = { porto: { start: null, end: null }, sotta: { start: null, end: null } };
 
     function initCalendar(propertyId) {
@@ -523,7 +513,7 @@
         });
     }
 
-    // 5. SYNCHRONISATION OPTIMISÉE AIRBNB iCAL
+    // 5. SYNCHRONISATION AIRBNB iCAL
     async function synchroniserAvecAirbnb(propertyId, icalUrl) {
         if (!icalUrl || icalUrl.includes("URL_DE_TON_LIEN_ICAL_AIRBNB_ICI")) {
             initCalendar(propertyId);
@@ -547,7 +537,7 @@
                     const finTemp = parseICalDate(ligne.split(':')[1].substring(0, 8));
                     let courante = new Date(debutTemp);
                     while (courante < finTemp) {
-                        if (courante.getFullYear() === 2026 && courante.getMonth() === 4) { // Mai 2026
+                        if (courante.getFullYear() === 2026 && courante.getMonth() === 4) {
                             datesReservees.push(courante.getDate());
                         }
                         courante.setDate(courante.getDate() + 1);
