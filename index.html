@@ -9,7 +9,7 @@
         :root {
             --text-color: #1a1a1a;
             --text-muted: #5a5a5a;
-            --accent-color: #b5836a; /* Terracotta chic */
+            --accent-color: #b5836a; 
             --brand-dark: #3a312c;
         }
 
@@ -33,9 +33,16 @@
             width: 100%; 
             max-width: 430px; 
             text-align: center; 
+            /* Animation d'apparition douce au chargement du site */
+            animation: fadeInPage 1.2s ease-out;
         }
 
-        /* En-tête style Écrin de verre */
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* En-tête Écrin de verre */
         .header-card {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(14px);
@@ -124,7 +131,6 @@
             position: relative;
         }
 
-        /* Effet de fondu subtil sur l'image au survol */
         .property-image-wrapper::after {
             content: '';
             position: absolute;
@@ -177,7 +183,6 @@
             margin-bottom: 18px;
         }
 
-        /* Bouton d'action pro avec micro-interaction flèche */
         .property-cta {
             display: inline-flex;
             align-items: center;
@@ -288,7 +293,7 @@
             transform: scale(1.3);
         }
 
-        /* Pied de page haut de gamme */
+        /* Pied de page */
         .footer-links {
             margin-top: 60px;
             display: flex;
