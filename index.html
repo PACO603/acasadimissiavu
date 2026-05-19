@@ -2,7 +2,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>A Casa Di Missiavu - Collection Corse</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="olivier-fond2.jpg">
     <style>
         :root {
             --text-color: #1a1a1a;
@@ -15,7 +15,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background: linear-gradient(rgba(181, 131, 106, 0.12), rgba(30, 25, 20, 0.22)), 
-                        url('olivier-fond2.jpg');
+                        url('https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -173,19 +173,11 @@
             transform: translateX(4px);
         }
 
-        /* Section Témoignages (Slider Intégré) */
-        .reviews-section {
-            margin-top: 35px; width: 100%; box-sizing: border-box; padding: 40px 25px; background: #a38a7b; border-radius: 24px; box-shadow: 0 15px 35px rgba(58, 49, 44, 0.18);
+        /* Zone d'intégration Trustindex pour les avis */
+        .trustindex-wrapper {
+            margin: 20px 0;
+            width: 100%;
         }
-        .reviews-section h3 { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: 28px; font-weight: 600; color: #ffffff; margin-top: 0; }
-        .slider-container { position: relative; padding: 0 20px; }
-        .slide { font-size: 0.88rem; line-height: 1.75; font-style: italic; color: #ffffff; min-height: 75px; }
-        .slide strong { display: block; margin-top: 15px; font-style: normal; font-size: 0.75rem; letter-spacing: 1.5px; text-transform: uppercase; color: #fdf0e6; }
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; font-size: 16px; color: #ffffff; opacity: 0.6; padding: 10px; z-index: 5; }
-        .prev-btn { left: -15px; } .next-btn { right: -15px; }
-        .dots-container { margin-top: 25px; }
-        .dot { height: 5px; width: 5px; background-color: rgba(255, 255, 255, 0.35); border-radius: 50%; display: inline-block; margin: 0 6px; }
-        .dot.active { background-color: #ffffff; transform: scale(1.3); }
 
         .footer-links { margin-top: 60px; display: flex; justify-content: center; gap: 15px; width: 100%; }
         .footer-link { font-size: 0.75rem; text-decoration: none; color: var(--brand-dark); text-transform: uppercase; letter-spacing: 2px; font-weight: 600; padding: 12px 26px; background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(8px); border-radius: 30px; border: 1px solid rgba(255, 255, 255, 0.5); }
@@ -270,10 +262,10 @@
             color: var(--brand-dark);
         }
 
-        .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 30px; }
+        .page-text { font-size: 0.88rem; line-height: 1.7; color: var(--text-muted); margin-bottom: 25px; }
 
         /* Calendriers Optis */
-        .calendar-section { margin-bottom: 30px; }
+        .calendar-section { margin-bottom: 30px; margin-top: 25px; }
         .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 5px; }
         .calendar-subtitle { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 15px; }
         
@@ -343,31 +335,6 @@
         </div>
     </div>
 
-    <div class="reviews-section">
-        <h3>L'expérience de nos hôtes</h3>
-        <div class="slider-container">
-            <div class="slide" style="display: block;">
-                <p>"Un séjour hors du temps. La demeure à Sotta est un véritable havre de paix où chaque détail est pensé avec goût."</p>
-                <strong>— Marie D. (via Airbnb)</strong>
-            </div>
-            <div class="slide" style="display: none;">
-                <p>"La vue depuis l'appartement de Porto-Vecchio est tout simplement magique au réveil. Accueil remarquable."</p>
-                <strong>— Jean-Marc P. (via Airbnb)</strong>
-            </div>
-            <div class="slide" style="display: none;">
-                <p>"Propreté irréprochable, design épuré et conseils précieux pour découvrir la région. Nous reviendrons sans hésiter."</p>
-                <strong>— Sophie L. (via Airbnb)</strong>
-            </div>
-            <button class="nav-btn prev-btn" onclick="event.stopPropagation(); changeSlide(-1)">❮</button>
-            <button class="nav-btn next-btn" onclick="event.stopPropagation(); changeSlide(1)">❯</button>
-        </div>
-        <div class="dots-container">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-        </div>
-    </div>
-
     <div class="footer-links">
         <a href="#" class="footer-link">Instagram</a>
         <a href="mailto:contact@exemple.com" class="footer-link">Contact</a>
@@ -402,6 +369,8 @@
                 Niché sur les hauteurs de Porto-Vecchio, ce duplex de très grand standing offre une immersion exclusive face à la mer.
             </p>
 
+            <div class="<script defer async src='https://cdn.trustindex.io/loader.js?63f28537271222892a66808ae52'></script>">
+                </div>
             <div class="calendar-section">
                 <h4>Disponibilités • Mai 2026</h4>
                 <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
@@ -454,6 +423,8 @@
                 Une bergerie authentique en pierres de Corse nichée au cœur du maquis odorant.
             </p>
 
+            <div class="trustindex-wrapper">
+                </div>
             <div class="calendar-section">
                 <h4>Disponibilités • Mai 2026</h4>
                 <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
@@ -478,24 +449,11 @@
 </div>
 
 <script>
-    // 1. LIENS AIRBNB ICAL (Insère tes vrais liens ici)
+    // 1. LIENS AIRBNB ICAL (Insère tes flux de réservation ici)
     const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
     const AIRBNB_ICAL_URL_SOTTA = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
 
-    // 2. LOGIQUE DU SLIDER D'AVIS
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-    const dots = document.querySelectorAll('.dot');
-
-    function changeSlide(direction) {
-        slides[currentSlide].style.display = 'none';
-        dots[currentSlide].classList.remove('active');
-        currentSlide = (currentSlide + direction + slides.length) % slides.length;
-        slides[currentSlide].style.display = 'block';
-        dots[currentSlide].classList.add('active');
-    }
-
-    // 3. GESTION DES MODALES
+    // 2. GESTION DES MODALES
     function openPage(id) {
         document.getElementById(id).style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -506,7 +464,7 @@
         document.body.style.overflow = 'auto';
     }
 
-    // 4. NAVIGATION GALERIES PHOTOS MODALES
+    // 3. NAVIGATION GALERIES PHOTOS MODALES
     const galleryIndices = { porto: 0, sotta: 0 };
     function moveGallery(property, direction) {
         const slider = document.getElementById(`slides-${property}`);
@@ -515,7 +473,7 @@
         slider.style.transform = `translateX(${-galleryIndices[property] * 100}%)`;
     }
 
-    // 5. SELECTION DES DATES (Calendrier Interactif)
+    // 4. SELECTION DES DATES (Calendrier Interactif)
     const bookingDates = { porto: { start: null, end: null }, sotta: { start: null, end: null } };
 
     function initCalendar(propertyId) {
@@ -523,7 +481,6 @@
         const days = container.querySelectorAll('.cal-day.available');
         const bookBtn = document.getElementById(`btn-book-${propertyId}`);
 
-        // Nettoyage des événements existants
         days.forEach(day => {
             const clone = day.cloneNode(true);
             day.parentNode.replaceChild(clone, day);
@@ -565,7 +522,7 @@
         });
     }
 
-    // 6. SYNCHRONISATION OPTIMISÉE AIRBNB iCAL
+    // 5. SYNCHRONISATION OPTIMISÉE AIRBNB iCAL
     async function synchroniserAvecAirbnb(propertyId, icalUrl) {
         if (!icalUrl || icalUrl.includes("URL_DE_TON_LIEN_ICAL_AIRBNB_ICI")) {
             initCalendar(propertyId);
@@ -609,7 +566,7 @@
         } catch (erreur) {
             console.error("Erreur synchro Airbnb " + propertyId + ":", erreur);
         } finally {
-            initCalendar(propertyId); // Initialise la sélection dans tous les cas
+            initCalendar(propertyId);
         }
     }
 
