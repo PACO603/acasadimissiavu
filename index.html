@@ -14,7 +14,6 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            /* CORRECTION ICI : L'image s'affiche parfaitement et reste nette */
             background-image: linear-gradient(rgba(181, 131, 106, 0.15), rgba(30, 25, 20, 0.25)), 
                               url('olivier-fond2.jpg');
             background-size: cover;
@@ -362,11 +361,36 @@
             margin-bottom: 25px;
         }
 
-        /* Calendriers */
+        /* Calendriers multi-mois */
         .calendar-section { margin-bottom: 30px; margin-top: 25px; }
         .calendar-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--brand-dark); margin-bottom: 5px; }
         .calendar-subtitle { font-size: 0.72rem; color: var(--text-muted); margin-bottom: 15px; }
         
+        /* Container pour faire défiler les mois ou les lister proprement */
+        .months-container {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-height: 380px;
+            overflow-y: auto;
+            padding-right: 5px;
+            border: 1px solid rgba(181, 131, 106, 0.1);
+            border-radius: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .month-block { margin-bottom: 5px; }
+        .month-title {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--brand-dark);
+            text-transform: capitalize;
+            margin-bottom: 10px;
+            padding-left: 5px;
+            border-left: 3px solid var(--accent-color);
+        }
+
         .calendar-grid {
             display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;
             background: #ffffff; padding: 15px; border-radius: 18px;
@@ -375,6 +399,7 @@
         .cal-day-name { font-size: 0.65rem; font-weight: 700; text-align: center; color: var(--accent-color); padding-bottom: 5px; }
         
         .cal-day { font-size: 0.78rem; text-align: center; padding: 8px 0; border-radius: 8px; font-weight: 500; background: #fafafa; color: #ccc; }
+        .cal-day.empty { background: transparent; }
         .cal-day.available { background: #f4ebe6; color: var(--brand-dark); font-weight: 600; cursor: pointer; transition: all 0.2s; }
         .cal-day.available:hover { background: var(--accent-color); color: white; }
         .cal-day.booked { background: #f5f5f5; color: #b0b0b0; text-decoration: line-through; font-weight: 300; cursor: not-allowed; }
@@ -382,7 +407,7 @@
         .cal-day.selected { background: var(--accent-color) !important; color: #ffffff !important; }
         .cal-day.in-range { background: rgba(181, 131, 106, 0.25) !important; color: var(--brand-dark) !important; border-radius: 0; }
 
-        .calendar-legend { display: flex; gap: 15px; margin-top: 10px; font-size: 0.72rem; padding-left: 5px; }
+        .calendar-legend { display: flex; gap: 12px; margin-top: 12px; font-size: 0.7rem; padding-left: 5px; flex-wrap: wrap; }
         .legend-item { display: flex; align-items: center; gap: 5px; }
         .legend-color { width: 10px; height: 10px; border-radius: 3px; }
 
@@ -539,19 +564,15 @@
             </div>
 
             <div class="calendar-section">
-                <h4>Disponibilités • Mai 2026</h4>
-                <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
-                <div class="calendar-grid" id="cal-porto">
-                    <div class="cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
-                    <div class="cal-day available" data-day="1">1</div><div class="cal-day available" data-day="2">2</div><div class="cal-day available" data-day="3">3</div>
-                    <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day available" data-day="7">7</div><div class="cal-day available" data-day="8">8</div><div class="cal-day available" data-day="9">9</div><div class="cal-day available" data-day="10">10</div>
-                    <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day available" data-day="16">16</div><div class="cal-day available" data-day="17">17</div>
-                    <div class="cal-day available" data-day="18">18</div><div class="cal-day available" data-day="19">19</div><div class="cal-day available" data-day="20">20</div><div class="cal-day available" data-day="21">21</div><div class="cal-day available" data-day="22">22</div><div class="cal-day available" data-day="23">23</div><div class="cal-day available" data-day="24">24</div>
-                    <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day available" data-day="27">27</div><div class="cal-day available" data-day="28">28</div><div class="cal-day available" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
-                </div>
+                <h4>Disponibilités • 1 An</h4>
+                <div class="calendar-subtitle">Sélectionnez votre séjour parmi les 12 prochains mois :</div>
+                
+                <div class="months-container" id="cal-container-porto">
+                    </div>
+
                 <div class="calendar-legend">
                     <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
-                    <div class="legend-item"><div class="legend-color" style="background:#b5836a;"></div>Votre sélection</div>
+                    <div class="legend-item"><div class="legend-color" style="background:#b5836a;"></div>Sélection</div>
                     <div class="legend-item"><div class="legend-color" style="background:#f5f5f5; border:1px solid #ddd;"></div>Réservé</div>
                 </div>
             </div>
@@ -621,19 +642,15 @@
             </div>
 
             <div class="calendar-section">
-                <h4>Disponibilités • Mai 2026</h4>
-                <div class="calendar-subtitle">Sélectionnez vos dates sur le calendrier :</div>
-                <div class="calendar-grid" id="cal-sotta">
-                    <div class="calendar-grid-name cal-day-name">L</div><div class="cal-day-name">M</div><div class="cal-day-name">M</div><div class="cal-day-name">J</div><div class="cal-day-name">V</div><div class="cal-day-name">S</div><div class="cal-day-name">D</div>
-                    <div class="cal-day available" data-day="1">1</div><div class="cal-day available" data-day="2">2</div><div class="cal-day available" data-day="3">3</div>
-                    <div class="cal-day available" data-day="4">4</div><div class="cal-day available" data-day="5">5</div><div class="cal-day available" data-day="6">6</div><div class="cal-day available" data-day="7">7</div><div class="cal-day available" data-day="8">8</div><div class="cal-day available" data-day="9">9</div><div class="cal-day available" data-day="10">10</div>
-                    <div class="cal-day available" data-day="11">11</div><div class="cal-day available" data-day="12">12</div><div class="cal-day available" data-day="13">13</div><div class="cal-day available" data-day="14">14</div><div class="cal-day available" data-day="15">15</div><div class="cal-day available" data-day="16">16</div><div class="cal-day available" data-day="17">17</div>
-                    <div class="cal-day available" data-day="18">18</div><div class="cal-day available" data-day="19">19</div><div class="cal-day available" data-day="20">20</div><div class="cal-day available" data-day="21">21</div><div class="cal-day available" data-day="22">22</div><div class="cal-day available" data-day="23">23</div><div class="cal-day available" data-day="24">24</div>
-                    <div class="cal-day available" data-day="25">25</div><div class="cal-day available" data-day="26">26</div><div class="cal-day available" data-day="27">27</div><div class="cal-day available" data-day="28">28</div><div class="cal-day available" data-day="29">29</div><div class="cal-day available" data-day="30">30</div><div class="cal-day available" data-day="31">31</div>
-                </div>
+                <h4>Disponibilités • 1 An</h4>
+                <div class="calendar-subtitle">Sélectionnez votre séjour parmi les 12 prochains mois :</div>
+                
+                <div class="months-container" id="cal-container-sotta">
+                    </div>
+
                 <div class="calendar-legend">
                     <div class="legend-item"><div class="legend-color" style="background:#f4ebe6;"></div>Disponible</div>
-                    <div class="legend-item"><div class="legend-color" style="background:#b5836a;"></div>Votre sélection</div>
+                    <div class="legend-item"><div class="legend-color" style="background:#b5836a;"></div>Sélection</div>
                     <div class="legend-item"><div class="legend-color" style="background:#f5f5f5; border:1px solid #ddd;"></div>Réservé</div>
                 </div>
             </div>
@@ -647,6 +664,9 @@
     // 1. LIENS AIRBNB ICAL
     const AIRBNB_ICAL_URL_PORTO = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
     const AIRBNB_ICAL_URL_SOTTA = "URL_DE_TON_LIEN_ICAL_AIRBNB_ICI";
+
+    // Noms des mois pour l'affichage des titres de calendriers
+    const MONTH_NAMES = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
 
     // 2. GESTION DES MODALES
     function openPage(id) {
@@ -668,7 +688,7 @@
         slider.style.transform = `translateX(${-galleryIndices[property] * 100}%)`;
     }
 
-    // 4. MOTEUR DE NAVIGATION POUR LES CARROUSELS D'AVIS (Flèches et Points)
+    // 4. MOTEUR DE NAVIGATION POUR LES CARROUSELS D'AVIS
     const reviewIndices = { host: 0, porto: 0, sotta: 0 };
 
     function updateReviewCarousel(carouselId) {
@@ -676,17 +696,11 @@
         const dotsContainer = document.getElementById(`dots-reviews-${carouselId}`);
         const index = reviewIndices[carouselId];
         
-        // Fait défiler le conteneur
         slider.style.transform = `translateX(${-index * 100}%)`;
         
-        // Met à jour l'état visuel des petits points (dots)
         const dots = dotsContainer.querySelectorAll('.rev-dot');
         dots.forEach((dot, idx) => {
-            if(idx === index) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+            dot.classList.toggle('active', idx === index);
         });
     }
 
@@ -702,59 +716,140 @@
         updateReviewCarousel(carouselId);
     }
 
-    // 5. SELECTION DES DATES DES CALENDRIERS
-    const bookingDates = { porto: { start: null, end: null }, sotta: { start: null, end: null } };
+    // 5. SELECTION ET GENERATION DES CALENDRIERS (12 MOIS GLISSANTS DEPUIS MAI 2026)
+    const bookingDates = { 
+        porto: { start: null, end: null }, 
+        sotta: { start: null, end: null } 
+    };
 
-    function initCalendar(propertyId) {
-        const container = document.getElementById(`cal-${propertyId}`);
-        const days = container.querySelectorAll('.cal-day.available');
+    // Génère les 12 mois dans l'interface HTML
+    function generate12MonthsCalendarHTML(propertyId) {
+        const container = document.getElementById(`cal-container-${propertyId}`);
+        container.innerHTML = ''; // Nettoyer
+
+        let startYear = 2026;
+        let startMonth = 4; // Mai (base 0)
+
+        for (let m = 0; m < 12; m++) {
+            let currentMonth = (startMonth + m) % 12;
+            let currentYear = startYear + Math.floor((startMonth + m) / 12);
+
+            const monthBlock = document.createElement('div');
+            monthBlock.className = 'month-block';
+
+            const title = document.createElement('div');
+            title.className = 'month-title';
+            title.innerText = `${MONTH_NAMES[currentMonth]} ${currentYear}`;
+            monthBlock.appendChild(title);
+
+            const grid = document.createElement('div');
+            grid.className = 'calendar-grid';
+            grid.id = `cal-grid-${propertyId}-${currentYear}-${currentMonth}`;
+
+            // En-tête des jours
+            const daysInitials = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+            daysInitials.forEach(initial => {
+                const dayName = document.createElement('div');
+                dayName.className = 'cal-day-name';
+                dayName.innerText = initial;
+                grid.appendChild(dayName);
+            });
+
+            // Calcul du décalage (premier jour du mois)
+            let firstDayIndex = new Date(currentYear, currentMonth, 1).getDay();
+            // Convertir de Dim=0..Sam=6 à Lun=0..Dim=6
+            firstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+
+            // Cases vides
+            for (let i = 0; i < firstDayIndex; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'cal-day empty';
+                grid.appendChild(emptyDay);
+            }
+
+            // Nombre de jours dans le mois
+            let totalDays = new Date(currentYear, currentMonth + 1, 0).getDate();
+            for (let d = 1; d <= totalDays; d++) {
+                const dayCell = document.createElement('div');
+                dayCell.className = 'cal-day available';
+                dayCell.setAttribute('data-date', `${currentYear}-${String(currentMonth+1).padStart(2, '0')}-${String(d).padStart(2, '0')}`);
+                dayCell.innerText = d;
+                grid.appendChild(dayCell);
+            }
+
+            monthBlock.appendChild(grid);
+            container.appendChild(monthBlock);
+        }
+    }
+
+    // Gère l'événement clic et la sélection de plage de dates sur 1 an
+    function initCalendarLogic(propertyId) {
+        const container = document.getElementById(`cal-container-${propertyId}`);
         const bookBtn = document.getElementById(`btn-book-${propertyId}`);
+        const days = container.querySelectorAll('.cal-day.available');
 
         days.forEach(day => {
-            const clone = day.cloneNode(true);
-            day.parentNode.replaceChild(clone, day);
-        });
-
-        const freshDays = container.querySelectorAll('.cal-day.available');
-        freshDays.forEach(day => {
             day.addEventListener('click', () => {
-                const dayNum = parseInt(day.getAttribute('data-day'));
+                const dateStr = day.getAttribute('data-date');
+                const clickedDate = new Date(dateStr);
                 let data = bookingDates[propertyId];
 
                 if (!data.start || (data.start && data.end)) {
-                    data.start = dayNum; data.end = null;
-                } else if (dayNum < data.start) {
-                    data.start = dayNum;
+                    data.start = clickedDate; 
+                    data.end = null;
+                } else if (clickedDate < data.start) {
+                    data.start = clickedDate;
                 } else {
+                    // Vérifier s'il y a un jour réservé au milieu de la plage sélectionnée
                     let hasBlock = false;
-                    for (let i = data.start; i <= dayNum; i++) {
-                        if (container.querySelector(`[data-day="${i}"].booked`)) hasBlock = true;
+                    let cursor = new Date(data.start);
+                    while (cursor <= clickedDate) {
+                        let checkStr = `${cursor.getFullYear()}-${String(cursor.getMonth()+1).padStart(2, '0')}-${String(cursor.getDate()).padStart(2, '0')}`;
+                        let targetCell = container.querySelector(`[data-date="${checkStr}"]`);
+                        if (targetCell && targetCell.classList.contains('booked')) {
+                            hasBlock = true;
+                        }
+                        cursor.setDate(cursor.getDate() + 1);
                     }
-                    if (!hasBlock) data.end = dayNum; else data.start = dayNum;
+
+                    if (!hasBlock) {
+                        data.end = clickedDate;
+                    } else {
+                        data.start = clickedDate;
+                    }
                 }
 
-                container.querySelectorAll('.cal-day').forEach(d => {
-                    const dNum = parseInt(d.getAttribute('data-day'));
+                // Rafraîchir l'affichage graphique de toutes les cases
+                days.forEach(d => {
+                    const dTime = new Date(d.getAttribute('data-date'));
                     d.classList.remove('selected', 'in-range');
-                    if (data.start && dNum === data.start) d.classList.add('selected');
-                    if (data.end && dNum === data.end) d.classList.add('selected');
-                    if (data.start && data.end && dNum > data.start && dNum < data.end) d.classList.add('in-range');
+                    
+                    if (data.start && dTime.getTime() === data.start.getTime()) d.classList.add('selected');
+                    if (data.end && dTime.getTime() === data.end.getTime()) d.classList.add('selected');
+                    if (data.start && data.end && dTime > data.start && dTime < data.end) d.classList.add('in-range');
                 });
 
+                // Mettre à jour le lien du bouton de réservation par email
                 if (data.start) {
-                    let dateStr = `du ${data.start} Mai 2026`;
-                    if (data.end) dateStr += ` au ${data.end} Mai 2026`;
+                    let formattedStart = `${String(data.start.getDate()).padStart(2, '0')}/${String(data.start.getMonth()+1).padStart(2, '0')}/${data.start.getFullYear()}`;
+                    let mailText = `du ${formattedStart}`;
+                    if (data.end) {
+                        let formattedEnd = `${String(data.end.getDate()).padStart(2, '0')}/${String(data.end.getMonth()+1).padStart(2, '0')}/${data.end.getFullYear()}`;
+                        mailText += ` au ${formattedEnd}`;
+                    }
                     const propertyName = propertyId === 'porto' ? "L'Echappée" : "Demeure Sotta";
-                    bookBtn.setAttribute('href', `mailto:contact@exemple.com?subject=Demande de réservation - ${propertyName} (${dateStr})`);
+                    bookBtn.setAttribute('href', `mailto:contact@exemple.com?subject=Demande de réservation - ${propertyName} (${mailText})`);
                 }
             });
         });
     }
 
-    // 6. SYNCHRONISATION AIRBNB iCAL
+    // 6. SYNCHRONISATION MULTI-MOIS AVEC ICAL AIRBNB
     async function synchroniserAvecAirbnb(propertyId, icalUrl) {
+        generate12MonthsCalendarHTML(propertyId);
+
         if (!icalUrl || icalUrl.includes("URL_DE_TON_LIEN_ICAL_AIRBNB_ICI")) {
-            initCalendar(propertyId);
+            initCalendarLogic(propertyId);
             return;
         }
 
@@ -764,38 +859,42 @@
             const data = await response.text();
 
             const lignes = data.split('\n');
-            let datesReservees = [];
+            let datesReserveesStrings = [];
             let debutTemp = null;
 
             lignes.forEach(ligne => {
-                if (ligne.startsWith('DTSTART')) {
-                    debutTemp = parseICalDate(ligne.split(':')[1].substring(0, 8));
+                let cleanLigne = ligne.trim();
+                if (cleanLigne.startsWith('DTSTART')) {
+                    let parts = cleanLigne.split(':');
+                    debutTemp = parseICalDate(parts[1].substring(0, 8));
                 }
-                if (ligne.startsWith('DTEND') && debutTemp) {
-                    const finTemp = parseICalDate(ligne.split(':')[1].substring(0, 8));
+                if (cleanLigne.startsWith('DTEND') && debutTemp) {
+                    let parts = cleanLigne.split(':');
+                    const finTemp = parseICalDate(parts[1].substring(0, 8));
+                    
                     let courante = new Date(debutTemp);
                     while (courante < finTemp) {
-                        if (courante.getFullYear() === 2026 && courante.getMonth() === 4) {
-                            datesReservees.push(courante.getDate());
-                        }
+                        let formatStr = `${courante.getFullYear()}-${String(courante.getMonth()+1).padStart(2, '0')}-${String(courante.getDate()).padStart(2, '0')}`;
+                        datesReserveesStrings.push(formatStr);
                         courante.setDate(courante.getDate() + 1);
                     }
                     debutTemp = null;
                 }
             });
 
-            const container = document.getElementById(`cal-${propertyId}`);
-            container.querySelectorAll('.cal-day').forEach(day => {
-                const dayNum = parseInt(day.getAttribute('data-day'));
-                if (!isNaN(dayNum)) {
-                    day.className = datesReservees.includes(dayNum) ? "cal-day booked" : "cal-day available";
+            // Appliquer le style booked sur les éléments iCal trouvés
+            const container = document.getElementById(`cal-container-${propertyId}`);
+            datesReserveesStrings.forEach(dateStr => {
+                let cell = container.querySelector(`[data-date="${dateStr}"]`);
+                if (cell) {
+                    cell.className = "cal-day booked";
                 }
             });
 
         } catch (erreur) {
             console.error("Erreur synchro Airbnb " + propertyId + ":", erreur);
         } finally {
-            initCalendar(propertyId);
+            initCalendarLogic(propertyId);
         }
     }
 
